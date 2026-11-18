@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dushyant Bhaskar - Business Analyst</title>
+<meta name="description" content="Portfolio of Dushyant Bhaskar, Business Analyst. SQL, Python, Power BI, machine learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://db.onlinewebfonts.com/c/d08bafd725a4cfc309efb5a88e0b63a5?family=basis33" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#fff;--mut:rgba(255,255,255,.6);--dim:rgba(255,255,255,.5);--line:rgba(255,255,255,.14);--chip:#0b0b0b;--accent:#ef4444;--accent2:#f87171}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+.px{font-family:'basis33',monospace}
+a{color:inherit;text-decoration:none}
+.pad{padding-left:clamp(20px,4vw,56px);padding-right:clamp(20px,4vw,56px)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;width:100%;overflow:hidden;display:flex;flex-direction:column}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media(min-width:1024px){.hero video{transform:scale(1.2)}}
+.hero .inner{position:relative;z-index:10;display:flex;flex-direction:column;flex:1;min-height:100vh}
+nav{display:flex;align-items:center;justify-content:space-between;padding-top:24px;padding-bottom:24px}
+.links{display:none;gap:32px;font-size:14px;letter-spacing:.05em}
+.links a:hover,.burger:hover{opacity:.7}
+.burger{background:none;border:0;color:#fff;padding:8px;cursor:pointer}
+@media(min-width:768px){.links{display:flex}.burger{display:none}}
+.meta{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
+@media(min-width:1024px){.meta{grid-template-columns:repeat(4,1fr);gap:32px}}
+.meta h2{font-weight:400;font-size:18px;letter-spacing:.05em;line-height:1.15}
+.meta h2 .px{font-size:24px;display:block}
+@media(min-width:768px){.meta h2{font-size:20px}.meta h2 .px{font-size:30px}}
+.meta .r{text-align:right}@media(min-width:1024px){.meta .r{text-align:left}}
+.star{font-size:10px;color:var(--dim);margin-top:12px}
+.blurb{font-size:12px;color:var(--mut);margin-top:4px;line-height:1.6}
+.label{font-size:16px;letter-spacing:.15em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}
+.meta p,.meta li{font-size:14px;color:rgba(255,255,255,.9);list-style:none}
+.meta p{max-width:220px}
+.meta ul{display:grid;gap:2px}
+.spacer{flex:1}
+.bottom{padding-bottom:16px;display:grid;gap:16px;grid-template-columns:1fr;align-items:end}
+@media(min-width:1024px){.bottom{grid-template-columns:1fr 1fr;gap:24px}}
+h1{font-weight:400;text-transform:uppercase;letter-spacing:.05em;line-height:.72;font-size:clamp(30px,8vw,68px)}
+h1 .px{font-size:1.25em;display:inline-block;line-height:1;vertical-align:baseline}
+.rcol{display:flex;flex-direction:column;gap:20px;justify-content:flex-end}
+.photo{align-self:flex-start;display:flex;align-items:flex-end;gap:16px}
+@media(min-width:1024px){.photo{align-self:flex-end}}
+.photo img{width:150px;height:190px;object-fit:cover;object-position:center top;border:1px solid rgba(255,255,255,.3);filter:grayscale(.15) contrast(1.05)}
+@media(min-width:1024px){.photo img{width:190px;height:240px}}
+.btn{display:inline-flex;align-self:flex-start;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.3);padding:12px 24px;backdrop-filter:blur(4px);background:rgba(255,255,255,.05);font-size:14px;letter-spacing:.1em;transition:background .2s}
+.btn:hover{background:rgba(255,255,255,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:rgba(255,255,255,.8);align-self:flex-start}
+@media(min-width:1024px){.chips{align-self:flex-end}}
+.chip{background:var(--chip);padding:8px 14px;display:flex;align-items:center;gap:8px}
+.chip b{font-size:14px;letter-spacing:-.01em}
+.chip small{color:var(--dim);font-size:12px}
+.foot{margin-top:16px;padding-top:16px;padding-bottom:20px;display:grid;gap:8px;font-size:12px;color:var(--mut)}
+@media(min-width:640px){.foot{grid-template-columns:1fr 1fr}.foot .rt{text-align:right}}
+.foot a{color:var(--accent);transition:color .2s}.foot a:hover{color:var(--accent2)}
+
+/* mobile menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.95);backdrop-filter:blur(12px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:all .5s cubic-bezier(.16,1,.3,1)}
+.menu.open{opacity:1;pointer-events:auto}
+.menu .top{display:flex;justify-content:space-between;align-items:center;padding:24px}
+.menu nav{flex:1;flex-direction:column;justify-content:center;gap:32px;padding:0}
+.menu nav a{font-size:24px;letter-spacing:.15em;opacity:0;transform:translateY(16px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.menu.open nav a{opacity:1;transform:none}
+
+/* SECTIONS */
+section.s{padding-top:110px;padding-bottom:20px;border-top:1px solid var(--line)}
+.sh{display:grid;gap:12px;margin-bottom:48px}
+.sh .label{margin:0}
+.sh h2{font-weight:400;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(28px,5vw,52px);line-height:1}
+.sh h2 .px{font-size:1.2em}
+.wrap{max-width:1200px;margin:0 auto}
+.about{display:grid;gap:40px}
+@media(min-width:900px){.about{grid-template-columns:1.4fr 1fr}}
+.about p{color:rgba(255,255,255,.82);font-size:17px;max-width:62ch}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.stats div{background:#000;padding:22px}
+.stats .px{font-size:34px;display:block}
+.stats span{font-size:12px;color:var(--mut)}
+.skills{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(min-width:800px){.skills{grid-template-columns:repeat(2,1fr)}}
+.skills>div{background:#000;padding:26px}
+.skills h3{font-weight:500;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{background:var(--chip);border:1px solid var(--line);padding:6px 12px;font-size:13px;color:rgba(255,255,255,.88)}
+.row{display:grid;gap:8px;padding:28px 0;border-top:1px solid var(--line)}
+@media(min-width:800px){.row{grid-template-columns:220px 1fr;gap:40px}}
+.row:last-child{border-bottom:1px solid var(--line)}
+.when{font-size:13px;color:var(--dim);letter-spacing:.05em}
+.row h3{font-weight:500;font-size:20px}
+.row .co{color:var(--mut);font-size:14px;margin-bottom:10px}
+.row ul{padding-left:18px;color:rgba(255,255,255,.8);font-size:15px;display:grid;gap:6px;max-width:70ch}
+.cards{display:grid;gap:16px}
+@media(min-width:800px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{border:1px solid var(--line);padding:26px;background:var(--chip);display:flex;flex-direction:column;gap:12px;transition:border-color .2s}
+.card:hover{border-color:rgba(255,255,255,.4)}
+.card .px{font-size:28px;color:var(--dim)}
+.card h3{font-weight:500;font-size:19px}
+.card p{font-size:14px;color:var(--mut)}
+.card .tags span{font-size:12px;padding:4px 10px}
+.certs{columns:1;column-gap:48px;font-size:14px;color:rgba(255,255,255,.82)}
+@media(min-width:800px){.certs{columns:2}}
+.certs li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line);break-inside:avoid;display:flex;justify-content:space-between;gap:16px}
+.certs em{font-style:normal;color:var(--dim);white-space:nowrap}
+.contact{display:grid;gap:32px}
+@media(min-width:900px){.contact{grid-template-columns:1.2fr 1fr}}
+.big{font-size:clamp(26px,4.5vw,46px);text-transform:uppercase;letter-spacing:.04em;line-height:1.05}
+.big .px{font-size:1.2em}
+.clist{display:grid;gap:0}
+.clist a{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--line);font-size:16px;transition:opacity .2s}
+.clist a:last-child{border-bottom:1px solid var(--line)}
+.clist a:hover{opacity:.7}
+.clist small{color:var(--dim);font-size:12px;letter-spacing:.12em;text-transform:uppercase;align-self:center}
+footer{margin-top:90px;border-top:1px solid var(--line);padding-top:20px;padding-bottom:28px;font-size:12px;color:var(--mut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="top"><span class="px">DB</span><button class="burger" id="close" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <nav>
+    <a href="#about">ABOUT</a><a href="#skills">SKILLS</a><a href="#experience">EXPERIENCE</a><a href="#projects">PROJECTS</a><a href="#education">EDUCATION</a><a href="#contact">TALK</a>
+  </nav>
+</div>
+
+<header class="hero" id="top">
+  <video autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260725_114042_d2ed2a89-f2fa-449b-9609-da456344257b.mp4"></video>
+  <div class="inner pad">
+    <nav>
+      <a href="#top" class="px" style="font-size:22px;letter-spacing:.05em">DB</a>
+      <div class="links"><a href="#about">ABOUT</a><a href="#skills">SKILLS</a><a href="#experience">EXPERIENCE</a><a href="#projects">PROJECTS</a><a href="#education">EDUCATION</a><a href="#contact">TALK</a></div>
+      <button class="burger" id="open" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </nav>
+
+    <div class="meta">
+      <div>
+        <h2>DUSHYANT<span class="px">BHASKAR</span></h2>
+        <div class="star">*</div>
+        <div class="blurb px">Business analyst &amp; CS engineer.<br>Born in Jaipur, now studying<br>in Reims, France. Exchange<br>semester in Austria.</div>
+      </div>
+      <div class="r">
+        <h2>BUSINESS &amp;<span class="px">ANALYTICS</span></h2>
+      </div>
+      <div>
+        <div class="label px">What I Do</div>
+        <p>I turn messy data into forecasts, dashboards and decisions that teams can act on</p>
+      </div>
+      <div class="r">
+        <div class="label px">Services</div>
+        <ul>
+          <li>Sales &amp; Demand Forecasting</li>
+          <li>KPI Dashboards (Power BI, Excel)</li>
+          <li>SQL &amp; Python Analysis</li>
+          <li>Machine Learning Models</li>
+          <li>Web Development (MERN)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="bottom">
+      <h1>I TURN DATA<br><span class="px">INTO DECISIONS</span><br>FOR GROWING<br><span class="px">BUSINESSES</span></h1>
+      <div class="rcol">
+        <div class="photo"><img src="assets/dushyant.jpeg" alt="Portrait of Dushyant Bhaskar"></div>
+        <a class="btn" href="https://www.linkedin.com/in/dushyant-bhaskar-677a12251/" target="_blank" rel="noopener">VIEW LINKEDIN</a>
+        <div class="chips">
+          <div class="chip"><b>SQL</b><small>MySQL</small></div>
+          <div class="chip"><b>Python</b><small>ML</small></div>
+          <div class="chip"><b>Power BI</b><small>+ Excel</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div>Open to internships and full-time roles, in France or remote. <a href="#contact">Get in touch</a></div>
+      <div class="rt">3 internships &bull; 2 ML projects &bull; 10+ certifications</div>
+    </div>
+  </div>
+</header>
+
+<main class="pad">
+<div class="wrap">
+
+<section class="s" id="about">
+  <div class="sh"><div class="label px">About</div><h2>Analyst who <span class="px">codes</span></h2></div>
+  <div class="about">
+    <div>
+      <p>I am a Business Analyst and Computer Science Engineering graduate (B.Tech, Manipal University Jaipur) with internship experience in sales forecasting, inventory optimisation and KPI reporting.</p>
+      <p style="margin-top:18px">I use SQL, Python, Excel and Power BI to support strategy and cross-functional teams. I completed an exchange semester in Austria and MBA-level coursework, and I am now at NEOMA Business School in Reims, France.</p>
+      <p style="margin-top:18px">My paper on SIBAD was published at CE2CT 2026 (IEEE).</p>
+    </div>
+    <div class="stats">
+      <div><span class="px">8.34</span><span>CGPA, B.Tech CSE</span></div>
+      <div><span class="px">95%</span><span>accuracy, image forgery CNN</span></div>
+      <div><span class="px">3</span><span>internships</span></div>
+      <div><span class="px">3</span><span>languages: English, Hindi, French (A2)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="skills">
+  <div class="sh"><div class="label px">Skills</div><h2>Tools <span class="px">I use</span></h2></div>
+  <div class="skills">
+    <div><h3>Business Analysis</h3><div class="tags"><span>KPI tracking</span><span>Dashboards</span><span>Decision support</span><span>Sales trend analysis</span><span>Inventory optimisation</span></div></div>
+    <div><h3>Data &amp; Analytics</h3><div class="tags"><span>SQL (MySQL)</span><span>Python</span><span>Excel</span><span>Power BI</span><span>IBM Cognos</span><span>EDA</span><span>Predictive modelling</span></div></div>
+    <div><h3>Machine Learning</h3><div class="tags"><span>Supervised &amp; unsupervised</span><span>Feature engineering</span><span>CNNs</span><span>Statistics</span><span>Linear algebra</span></div></div>
+    <div><h3>Programming &amp; Systems</h3><div class="tags"><span>Python</span><span>Java</span><span>C/C++</span><span>JavaScript</span><span>MERN</span><span>PHP</span><span>Linux</span><span>Bash</span><span>Ansible</span><span>CCNA</span></div></div>
+  </div>
+</section>
+
+<section class="s" id="experience">
+  <div class="sh"><div class="label px">Experience</div><h2>Where I <span class="px">worked</span></h2></div>
+  <div>
+    <div class="row">
+      <div class="when">Feb 2026 - Jun 2026</div>
+      <div><h3>Business Analyst Intern</h3><div class="co">Zillionaire Global India Pvt. Ltd.</div>
+        <ul><li>Built predictive models in Python and SQL to forecast sales trends, optimise inventory levels and spot high-potential products.</li>
+        <li>Designed and maintained advanced Excel models and automated reports to track KPIs for stakeholders.</li></ul></div>
+    </div>
+    <div class="row">
+      <div class="when">Jun 2025 - Aug 2025</div>
+      <div><h3>Software Development Engineer Intern</h3><div class="co">Exaflair Technologies, Zirakpur</div>
+        <ul><li>Developed web applications with the MERN stack for the company's portfolio projects.</li>
+        <li>Carried out research tasks supporting product development, validation and innovation.</li></ul></div>
+    </div>
+    <div class="row">
+      <div class="when">May 2024 - Aug 2024</div>
+      <div><h3>Web Development Intern</h3><div class="co">Zillionaire Global India Pvt. Ltd.</div>
+        <ul><li>Developed the front end of the company website (zillionaireindia.com).</li>
+        <li>Worked on image and video classification for the website.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="projects">
+  <div class="sh"><div class="label px">Projects</div><h2>Selected <span class="px">work</span></h2></div>
+  <div class="cards">
+    <div class="card"><span class="px">01</span><h3>Image Forgery Detection</h3><p>A modified convolutional neural network that classifies images as authentic or manipulated, reaching 95% accuracy.</p><div class="tags"><span>Python</span><span>ML</span><span>Deep Learning</span></div></div>
+    <div class="card"><span class="px">02</span><h3>Face Mask Detector</h3><p>A CNN-based model using a Single Shot Detector to check whether a person is wearing a face mask.</p><div class="tags"><span>Python</span><span>ML</span></div></div>
+    <div class="card"><span class="px">03</span><h3>Business Failures Analysis</h3><p>An Excel model and report on why businesses fail, built with a team for the Data Driven Decision Making course at NEOMA.</p><div class="tags"><span>Excel</span><span>Analysis</span></div></div>
+  </div>
+</section>
+
+<section class="s" id="education">
+  <div class="sh"><div class="label px">Education</div><h2>Learning <span class="px">path</span></h2></div>
+  <div>
+    <div class="row"><div class="when">2026 - present</div><div><h3>NEOMA Business School</h3><div class="co">Reims, France</div></div></div>
+    <div class="row"><div class="when">Aug 2022 - Jul 2026</div><div><h3>B.Tech, Computer Science Engineering</h3><div class="co">Manipal University Jaipur | CGPA 8.34</div></div></div>
+    <div class="row"><div class="when">Oct 2025 - Jan 2026</div><div><h3>Exchange Program (7th semester)</h3><div class="co">Montanuniversität Leoben, Austria</div></div></div>
+    <div class="row"><div class="when">Senior Secondary</div><div><h3>CBSE, Science</h3><div class="co">Neerja Modi School, Jaipur | Class 10: 92.4%, Class 12: 93.2%</div></div></div>
+  </div>
+  <div class="sh" style="margin-top:70px"><div class="label px">Certifications</div></div>
+  <ul class="certs">
+    <li>MBA Essentials, Coursera<em>Dec 2025</em></li>
+    <li>Cisco Certified Network Associate (CCNA)<em>Apr 2025</em></li>
+    <li>Data Visualization and Dashboards with Excel and Cognos<em>Nov 2024</em></li>
+    <li>Exploratory Data Analysis for Machine Learning<em>Nov 2024</em></li>
+    <li>Key Industry 4.0 Technologies in Manufacturing 1<em>Nov 2024</em></li>
+    <li>Database Management Systems, Oracle Foundations<em>Mar 2024</em></li>
+    <li>Red Hat System Administration I (RH124)<em>Feb 2024</em></li>
+    <li>Red Hat Enterprise Linux Automation with Ansible (RH294)<em>Mar 2024</em></li>
+    <li>Mathematics for Linear Algebra, Coursera<em>Mar 2023</em></li>
+    <li>Ordered Data Structures, Coursera<em>Feb 2023</em></li>
+    <li>C Programming and Assembly Language, NPTEL<em>Sep 2024</em></li>
+  </ul>
+</section>
+
+<section class="s" id="contact">
+  <div class="sh"><div class="label px">Talk</div></div>
+  <div class="contact">
+    <div class="big">Let's turn your data <span class="px">into decisions</span></div>
+    <div class="clist">
+      <a href="mailto:bhaskardushyant40@gmail.com"><small>Email</small>bhaskardushyant40@gmail.com</a>
+      <a href="https://www.linkedin.com/in/dushyant-bhaskar-677a12251/" target="_blank" rel="noopener"><small>LinkedIn</small>dushyant-bhaskar</a>
+    </div>
+  </div>
+  <footer><span>&copy; 2026 Dushyant Bhaskar</span><span>Reims, France &bull; Jaipur, India</span></footer>
+</section>
+
+</div>
+</main>
+
+<script>
+const m=document.getElementById('menu');
+const links=[...m.querySelectorAll('nav a')];
+function set(o){m.classList.toggle('open',o);m.setAttribute('aria-hidden',!o);links.forEach((a,i)=>a.style.transitionDelay=o?(100+i*60)+'ms':'0ms')}
+document.getElementById('open').onclick=()=>set(true);
+document.getElementById('close').onclick=()=>set(false);
+links.forEach(a=>a.addEventListener('click',()=>set(false)));
+</script>
+</body>
+</html>
