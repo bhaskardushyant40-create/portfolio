@@ -1,572 +1,669 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="aurora">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dushyant Bhaskar — Business Analyst</title>
-<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dushyant Bhaskar - Business Analyst</title>
+<meta name="description" content="Portfolio of Dushyant Bhaskar, Business Analyst. SQL, Python, Power BI, machine learning.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&family=Caveat+Brush&family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-@property --mt{syntax:'<length>';inherits:true;initial-value:0px}
-@property --m0{syntax:'<length>';inherits:true;initial-value:0px}
-@property --mb{syntax:'<length>';inherits:true;initial-value:0px}
-@property --ms{syntax:'<length>';inherits:true;initial-value:0px}
 :root{
-  --green-900:#0b2f20;--green-800:#11402c;--green-700:#1a5a40;--mint:#cfeee0;--ink:#0d0f0e;
-  --n:1px;--glide:1.6s;--mbs:.3;--th:182px;
+  --bg:#05060d;--fg:#f4f6ff;--mut:rgba(236,240,255,.62);--dim:rgba(236,240,255,.42);
+  --line:rgba(255,255,255,.1);--glass:rgba(255,255,255,.045);--glass2:rgba(255,255,255,.08);
+  --a1:#22d3ee;--a2:#a78bfa;--a3:#f472b6;
+  --grad:linear-gradient(110deg,var(--a1),var(--a2) 55%,var(--a3));
+  --disp:'Space Grotesk',sans-serif;--mono:'JetBrains Mono',monospace;
 }
+html[data-theme=sunset]{--a1:#fbbf24;--a2:#fb7185;--a3:#c084fc}
+html[data-theme=matrix]{--a1:#4ade80;--a2:#22d3ee;--a3:#a3e635}
+html[data-theme=candy]{--a1:#f472b6;--a2:#818cf8;--a3:#38bdf8}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--green-900);font-family:'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none;touch-action:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;min-height:100vh;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.js .pre{opacity:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--a2);color:#000}
+@media(pointer:fine){body,a,button{cursor:none}}
 
-/* stage */
-.stage{position:fixed;inset:0;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#0c3523 0%,#14503a 45%,#9fd8bf 100%)}
+/* background */
+#bg{position:fixed;inset:0;z-index:0;width:100%;height:100%}
+.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blobs i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(90px);opacity:.28;animation:float 22s ease-in-out infinite alternate}
+.blobs i:nth-child(1){background:var(--a1);top:-20vmax;left:-15vmax}
+.blobs i:nth-child(2){background:var(--a2);bottom:-25vmax;right:-15vmax;animation-delay:-8s}
+.blobs i:nth-child(3){background:var(--a3);width:30vmax;height:30vmax;top:35%;left:45%;opacity:.14;animation-delay:-14s}
+@keyframes float{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:80;box-shadow:0 0 12px var(--a1)}
 
-/* frame: 1440x810 units */
-.frame{position:absolute;left:0;top:0;width:1440px;height:810px;transform-origin:0 0;z-index:1;will-change:transform;
-  --m0:0px;--mt:0px;--mb:0px;--ms:0px}
-.frame.glide{transition:transform var(--glide) cubic-bezier(.65,0,.35,1),--m0 var(--glide) cubic-bezier(.65,0,.35,1),--mt var(--glide) cubic-bezier(.65,0,.35,1),--mb var(--glide) cubic-bezier(.65,0,.35,1),--ms var(--glide) cubic-bezier(.65,0,.35,1)}
-.frame.d-fade.m-case{--mt:110px;--mb:60px;--ms:170px}
-.frame.m-fade{--mt:190px;--ms:140px}
-.frame.m-fade.m-case{--m0:48px;--mt:40px;--mb:70px;--ms:140px}
-.frame img,.frame video{display:block;user-select:none;-webkit-user-drag:none}
-.plate,.trans,.caseplate{
-  -webkit-mask-image:
-    linear-gradient(180deg,transparent calc(var(--o,0px) + var(--m0)),rgba(0,0,0,.35) calc(var(--o,0px) + var(--m0) + var(--mt)*.37),#000 calc(var(--o,0px) + var(--m0) + var(--mt)),#000 calc(100% - var(--ob,0px) - var(--mb)),transparent calc(100% - var(--ob,0px))),
-    linear-gradient(90deg,transparent 0,#000 var(--ms),#000 calc(100% - var(--ms)),transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:
-    linear-gradient(180deg,transparent calc(var(--o,0px) + var(--m0)),rgba(0,0,0,.35) calc(var(--o,0px) + var(--m0) + var(--mt)*.37),#000 calc(var(--o,0px) + var(--m0) + var(--mt)),#000 calc(100% - var(--ob,0px) - var(--mb)),transparent calc(100% - var(--ob,0px))),
-    linear-gradient(90deg,transparent 0,#000 var(--ms),#000 calc(100% - var(--ms)),transparent 100%);
-  mask-composite:intersect;
+/* cursor */
+.cur,.ring{position:fixed;top:0;left:0;pointer-events:none;z-index:200;border-radius:50%;display:none}
+@media(pointer:fine){.cur,.ring{display:block}}
+.cur{width:7px;height:7px;background:var(--a1);margin:-3.5px 0 0 -3.5px}
+.ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid rgba(255,255,255,.35);transition:width .25s,height .25s,margin .25s,background .25s,border-color .25s}
+.ring.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(255,255,255,.07);border-color:var(--a1)}
+
+/* nav */
+.top{position:fixed;top:16px;left:0;right:0;z-index:60;display:flex;justify-content:center;pointer-events:none;padding:0 12px}
+.dock{pointer-events:auto;display:flex;align-items:center;gap:2px;background:rgba(10,12,24,.6);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:999px;padding:5px;max-width:100%;overflow-x:auto;scrollbar-width:none;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.dock::-webkit-scrollbar{display:none}
+.logo{font-family:var(--disp);font-weight:700;font-size:15px;padding:8px 14px;border-radius:999px;background:var(--grad);color:#05060d;margin-right:4px;flex:none}
+.tab{position:relative;padding:8px 14px;border-radius:999px;font-size:13px;color:var(--mut);white-space:nowrap;transition:color .25s;flex:none}
+.tab:hover{color:var(--fg)}
+.tab.on{color:var(--fg);background:var(--glass2)}
+.tab.on::after{content:"";position:absolute;left:50%;bottom:3px;width:14px;height:2px;margin-left:-7px;border-radius:2px;background:var(--grad)}
+.tools{position:fixed;top:20px;right:clamp(12px,3vw,32px);z-index:61;display:flex;gap:8px}
+.tbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(10,12,24,.6);backdrop-filter:blur(14px);display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--mut);transition:all .25s}
+.tbtn:hover{color:var(--fg);border-color:var(--a1);transform:translateY(-2px)}
+.sw{width:16px;height:16px;border-radius:50%;background:var(--grad);box-shadow:0 0 14px var(--a1)}
+@media(max-width:900px){.tools{display:none}.logo{display:none}}
+
+/* views + transition */
+main{position:relative;z-index:5}
+.view{display:none;min-height:100vh;padding:110px clamp(20px,5vw,72px) 80px;max-width:1280px;margin:0 auto}
+.view.on{display:block;animation:vin .7s cubic-bezier(.16,1,.3,1) both}
+@keyframes vin{from{opacity:0;transform:translateY(24px) scale(.985);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.wipe{position:fixed;inset:0;z-index:150;display:flex;pointer-events:none}
+.wipe b{flex:1;background:linear-gradient(180deg,var(--a2),var(--a1));transform:scaleY(0);transform-origin:bottom;transition:transform .45s cubic-bezier(.76,0,.24,1)}
+.wipe.in b{transform:scaleY(1);transform-origin:bottom}
+.wipe.out b{transform:scaleY(0);transform-origin:top}
+.wipe b:nth-child(2){transition-delay:.04s}.wipe b:nth-child(3){transition-delay:.08s}.wipe b:nth-child(4){transition-delay:.12s}.wipe b:nth-child(5){transition-delay:.16s}.wipe b:nth-child(6){transition-delay:.2s}
+.wtitle{position:fixed;inset:0;z-index:151;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:clamp(34px,8vw,96px);color:#05060d;opacity:0;pointer-events:none;letter-spacing:-.02em;transition:opacity .25s}
+.wtitle.on{opacity:1}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.show{opacity:1;transform:none}
+
+/* shared */
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--a1);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--a1)}
+h2.t{font-family:var(--disp);font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1;letter-spacing:-.03em;margin-bottom:44px}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.card{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.1),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--line);background:var(--glass2);transition:border-color .25s,background .25s;will-change:transform}
+.btn:hover{border-color:var(--a1);background:rgba(255,255,255,.12)}
+.btn.pri{background:var(--grad);color:#05060d;border:0;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--glass);transition:all .25s}
+.tags span:hover{border-color:var(--a1);transform:translateY(-3px);box-shadow:0 8px 22px -8px var(--a1)}
+.next{display:flex;justify-content:space-between;gap:12px;margin-top:80px;padding-top:28px;border-top:1px solid var(--line);flex-wrap:wrap}
+.next button{font-family:var(--disp);font-size:clamp(18px,3vw,28px);font-weight:600;color:var(--mut);transition:color .25s,transform .25s}
+.next button:hover{color:var(--fg);transform:translateX(4px)}
+.next button.p:hover{transform:translateX(-4px)}
+.next small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+
+/* HOME */
+.hero{display:grid;gap:50px;align-items:center;min-height:calc(100vh - 190px)}
+@media(min-width:960px){.hero{grid-template-columns:1.25fr 1fr}}
+.pill{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--glass);margin-bottom:26px}
+.pill i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 #4ade80;animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(40px,7.2vw,92px);line-height:.98;letter-spacing:-.035em}
+.hero h1 span{display:block}
+.role{margin:26px 0 34px;font-family:var(--mono);font-size:clamp(14px,1.8vw,19px);color:var(--mut);min-height:1.6em}
+.role b{color:var(--a1);font-weight:500}
+.caret{display:inline-block;width:9px;height:1.1em;vertical-align:-.18em;background:var(--a1);margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.avwrap{display:flex;justify-content:center;perspective:900px}
+.av{position:relative;width:min(340px,78vw);aspect-ratio:4/5;transform-style:preserve-3d;transition:transform .2s ease-out}
+.av::before{content:"";position:absolute;inset:-3px;border-radius:34px;background:conic-gradient(from var(--ang,0deg),var(--a1),var(--a2),var(--a3),var(--a1));animation:spin 6s linear infinite;filter:blur(1px)}
+.av::after{content:"";position:absolute;inset:-30px;border-radius:50px;background:conic-gradient(from var(--ang,0deg),var(--a1),var(--a2),var(--a3),var(--a1));filter:blur(48px);opacity:.35;animation:spin 6s linear infinite;z-index:-1}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spin{to{--ang:360deg}}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:32px;border:4px solid var(--bg)}
+.fl{position:absolute;padding:9px 16px;border-radius:14px;font-family:var(--mono);font-size:12px;background:rgba(10,12,24,.75);backdrop-filter:blur(12px);border:1px solid var(--line);animation:bob 5s ease-in-out infinite;transform:translateZ(60px);white-space:nowrap}
+.fl i{color:var(--a1);font-style:normal}
+.fl.a{top:8%;left:-14%}.fl.b{top:46%;right:-16%;animation-delay:-1.6s}.fl.c{bottom:7%;left:-8%;animation-delay:-3.2s}
+@keyframes bob{50%{transform:translateZ(60px) translateY(-12px)}}
+.marq{margin-top:70px;overflow:hidden;border-block:1px solid var(--line);padding:16px 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marq div{display:flex;gap:48px;width:max-content;animation:mq 28s linear infinite;font-family:var(--disp);font-size:22px;color:var(--dim);font-weight:500}
+.marq:hover div{animation-play-state:paused}
+.marq span::after{content:"✦";margin-left:48px;color:var(--a2)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.hint{margin-top:26px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+kbd{font-family:var(--mono);font-size:11px;padding:2px 7px;border:1px solid var(--line);border-radius:6px;background:var(--glass)}
+.homefoot{margin-top:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--mut)}
+.homefoot a{color:var(--a1)}
+
+/* ABOUT */
+.ab{display:grid;gap:40px}
+@media(min-width:960px){.ab{grid-template-columns:1.2fr 1fr}}
+.ab p{font-size:clamp(16px,1.6vw,19px);color:rgba(236,240,255,.82);max-width:62ch;margin-bottom:18px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.stat{padding:24px}
+.stat b{display:block;font-family:var(--disp);font-size:clamp(34px,4.5vw,54px);line-height:1;letter-spacing:-.03em;margin-bottom:8px}
+.stat span{font-size:12.5px;color:var(--mut)}
+.term{margin-top:50px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:rgba(6,8,16,.8);backdrop-filter:blur(12px)}
+.thead{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--dim)}
+.thead i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.thead i:nth-child(2){background:#febc2e}.thead i:nth-child(3){background:#28c840}
+.thead span{margin-left:10px}
+.tbody{padding:16px 18px;font-family:var(--mono);font-size:13px;height:300px;overflow-y:auto;color:rgba(236,240,255,.85);line-height:1.7}
+.tbody .o{white-space:pre-wrap;color:var(--mut)}
+.tbody .c{color:var(--a1)}
+.tline{display:flex;gap:10px;align-items:center}
+.tline span{color:var(--a2)}
+.tline input{flex:1;background:none;border:0;outline:0;font:inherit;color:var(--fg);cursor:text;min-width:0}
+
+/* SKILLS */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.chip{padding:9px 18px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:var(--glass);transition:all .25s}
+.chip:hover{border-color:var(--a1)}
+.chip.on{background:var(--grad);color:#05060d;border-color:transparent;font-weight:600}
+.sk{display:grid;gap:16px}
+@media(min-width:800px){.sk{grid-template-columns:repeat(2,1fr)}}
+.sk .card{padding:28px;transition:opacity .4s,transform .4s,filter .4s}
+.sk .card.dim{opacity:.18;filter:blur(2px);transform:scale(.97)}
+.sk h3,.cards h3{font-family:var(--disp);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--a1);margin-bottom:16px;font-weight:500}
+
+/* EXPERIENCE */
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--a1),var(--a2),transparent)}
+.xp{position:relative;margin-bottom:16px}
+.xp::before{content:"";position:absolute;left:-34px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--a1);box-shadow:0 0 14px var(--a1)}
+.xp>button{width:100%;text-align:left;padding:22px 26px;display:grid;gap:4px;position:relative}
+.xp .when{font-family:var(--mono);font-size:12px;color:var(--a1);letter-spacing:.08em}
+.xp h3{font-family:var(--disp);font-size:clamp(20px,2.4vw,27px);font-weight:600;letter-spacing:-.01em}
+.xp .co{font-size:14px;color:var(--mut)}
+.xp .pl{position:absolute;right:24px;top:24px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:18px;line-height:1;transition:transform .35s,background .25s}
+.xp.open .pl{transform:rotate(45deg);background:var(--glass2)}
+.xp .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.16,1,.3,1)}
+.xp.open .more{grid-template-rows:1fr}
+.xp .more>div{overflow:hidden}
+.xp ul{padding:0 26px 24px 46px;display:grid;gap:8px;color:rgba(236,240,255,.8);font-size:15px;max-width:72ch}
+
+/* PROJECTS */
+.cards{display:grid;gap:18px}
+@media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr)}}
+.pc{padding:28px;display:flex;flex-direction:column;gap:14px;transform-style:preserve-3d;transition:transform .2s ease-out,border-color .3s}
+.pc:hover{border-color:rgba(255,255,255,.28)}
+.pc .n{font-family:var(--mono);font-size:13px;color:var(--a1)}
+.pc h3{font-family:var(--disp);font-size:23px;line-height:1.15;letter-spacing:-.01em;text-transform:none;color:var(--fg);margin:0;font-weight:600}
+.pc p{font-size:14.5px;color:var(--mut);flex:1}
+.lab{margin-top:70px;padding:clamp(22px,3vw,38px)}
+.lab h3{font-family:var(--disp);font-size:clamp(22px,3vw,32px);letter-spacing:-.02em;margin-bottom:6px}
+.lab>p{color:var(--mut);font-size:14px;margin-bottom:26px}
+.labgrid{display:grid;gap:26px}
+@media(min-width:900px){.labgrid{grid-template-columns:280px 1fr}}
+.ctl label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--mut);margin:18px 0 8px}
+.ctl label b{color:var(--a1);font-weight:500}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:var(--line);outline:0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--grad);border:2px solid var(--bg);box-shadow:0 0 12px var(--a1)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--a1);border:2px solid var(--bg)}
+.chartbox{position:relative;min-height:290px}
+#fc{width:100%;height:290px;display:block}
+.kpis{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--mut)}
+.kpis b{display:block;font-family:var(--disp);font-size:24px;color:var(--fg);font-weight:600}
+.note{font-size:11.5px;color:var(--dim);margin-top:12px;font-family:var(--mono)}
+
+/* EDUCATION */
+.ed{display:grid;gap:14px}
+.er{padding:24px 28px;display:grid;gap:6px}
+@media(min-width:800px){.er{grid-template-columns:220px 1fr;gap:30px;align-items:center}}
+.er .when{font-family:var(--mono);font-size:12px;color:var(--a1)}
+.er h3{font-family:var(--disp);font-size:21px;font-weight:600}
+.er .co{font-size:14px;color:var(--mut)}
+.csearch{margin:60px 0 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
+.csearch h3{font-family:var(--disp);font-size:clamp(24px,3.5vw,38px);letter-spacing:-.02em}
+.csearch input{background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:11px 20px;color:var(--fg);font:inherit;font-size:14px;outline:0;min-width:240px;cursor:text;transition:border-color .25s}
+.csearch input:focus{border-color:var(--a1)}
+.certs{list-style:none;display:grid;gap:10px}
+@media(min-width:800px){.certs{grid-template-columns:1fr 1fr}}
+.certs li{display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:var(--glass);font-size:14px;transition:transform .25s,border-color .25s,opacity .25s}
+.certs li:hover{transform:translateX(6px);border-color:var(--a1)}
+.certs li.hide{display:none}
+.certs em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap}
+
+/* CONTACT */
+.ct{display:grid;gap:44px}
+@media(min-width:960px){.ct{grid-template-columns:1.15fr 1fr;align-items:center}}
+.big{font-family:var(--disp);font-weight:700;font-size:clamp(38px,6.4vw,82px);line-height:1;letter-spacing:-.035em}
+.cl{display:grid;gap:12px}
+.cl a,.cl button{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:22px 26px;text-align:left;width:100%}
+.cl small{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:4px}
+.cl span.v{font-size:17px}
+.cl .ar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);transition:all .3s;flex:none}
+.cl a:hover .ar,.cl button:hover .ar{background:var(--grad);color:#05060d;transform:rotate(-45deg);border-color:transparent}
+.ft{margin-top:70px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--dim);padding-top:20px;border-top:1px solid var(--line)}
+
+/* palette + toast */
+.pal{position:fixed;inset:0;z-index:300;background:rgba(2,3,8,.6);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
+.pal.on{display:flex;animation:vin .3s both}
+.pbox{width:min(560px,92vw);background:rgba(12,14,26,.95);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.pbox input{width:100%;padding:20px 24px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;font-size:16px;outline:0;cursor:text}
+.pl2{max-height:340px;overflow-y:auto;padding:8px}
+.pi{display:flex;justify-content:space-between;width:100%;padding:12px 16px;border-radius:10px;font-size:14px;text-align:left;color:var(--mut)}
+.pi.sel{background:var(--glass2);color:var(--fg)}
+.pi small{font-family:var(--mono);color:var(--dim);font-size:11px}
+.toast{position:fixed;bottom:90px;left:50%;transform:translate(-50%,30px);opacity:0;z-index:310;padding:12px 22px;border-radius:999px;background:var(--grad);color:#05060d;font-weight:600;font-size:14px;transition:all .4s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){
+  .top{top:auto;bottom:14px}
+  .view{padding-top:60px;padding-bottom:110px}
+  .fl.a{left:-4%}.fl.b{right:-4%}.fl.c{left:0}
 }
-.plate{position:absolute;left:0;top:-73.125px;width:1440px;height:956.25px;--o:73.125px;--ob:73.125px}
-.cut{position:absolute;left:0;top:-73.125px;width:1440px;height:956.25px;z-index:4}
-.trans{position:absolute;inset:0;width:1440px;height:810px;object-fit:cover;opacity:0;z-index:6;--o:0px;--ob:0px}
-.caseplate{position:absolute;left:0;top:-105.47px;width:1440px;height:956.25px;opacity:0;z-index:7;--o:105.47px;--ob:40.78px}
-svg.wm{position:absolute;left:0;top:0;width:1440px;height:260px;overflow:visible;z-index:3}
-svg.wm text,svg.mwm text{font-family:'Inter Tight',sans-serif;font-weight:900;font-size:268px;letter-spacing:-6px}
-.script{position:absolute;top:148px;left:60px;z-index:6;font-family:'Caveat Brush',cursive;font-size:82px;line-height:1;color:#fff;letter-spacing:-.5px;transform:rotate(-8deg);transform-origin:0 50%;text-shadow:0 2px 14px rgba(0,0,0,.18);white-space:nowrap}
-
-/* badge */
-.badge{position:absolute;left:986px;top:-165px;width:582px;height:1030px;transform-origin:288px 0;z-index:5;pointer-events:none}
-.badge>img{position:absolute;inset:0;width:100%;height:100%}
-.badge .card{position:absolute;left:172px;top:536px;width:238px;height:392px;padding:20px 16px 0 16px;color:#141615;font-family:'Inter Tight',sans-serif}
-.badge h4{font-size:30px;line-height:.95;font-weight:800;letter-spacing:-.5px}
-.badge .yr{position:absolute;right:16px;top:62px;font-size:11px;font-weight:700}
-.badge .role{margin-top:12px;padding-top:5px;border-top:1px solid #222;font-size:9.5px;font-weight:700;letter-spacing:.2px}
-.badge .ph{width:92px;height:112px;margin:12px auto;border-radius:6px;background-color:#dfe4e1;background-repeat:no-repeat;background-size:cover;background-position:center top;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-.badge .row{display:flex;justify-content:space-between;align-items:flex-end;font-size:9px;font-weight:700;padding:6px 0 3px;border-bottom:1.5px dotted #333}
-.badge .row b{font-weight:600}
-.badge .hit{position:absolute;left:160px;top:470px;width:262px;height:440px;pointer-events:auto;cursor:grab}
-body.is-case .badge .hit{display:none}
-
-/* laptop screen */
-.screen{position:absolute;left:272.8px;top:102.7px;width:894.4px;height:604.7px;border-radius:3px;background:#000;overflow:hidden;opacity:0;z-index:8}
-.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;opacity:0}
-.screen::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 38%);pointer-events:none;z-index:1}
-.screen .flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:2;pointer-events:none}
-.screen-hit{position:absolute;left:272.8px;top:102.7px;width:894.4px;height:604.7px;z-index:9;cursor:pointer;display:none}
-body.is-case .screen-hit{display:block}
-
-/* ui layer */
-.ui{position:fixed;inset:0;z-index:20;pointer-events:none}
-.tag{position:absolute;pointer-events:auto;display:inline-flex;align-items:center;background:#fff;color:var(--ink);font-weight:650;font-size:calc(16.5*var(--n));letter-spacing:-.02em;height:calc(37*var(--n));padding:0 calc(18*var(--n));white-space:nowrap;box-shadow:0 calc(3*var(--n)) 0 rgba(0,0,0,.18),0 calc(6*var(--n)) calc(14*var(--n)) rgba(0,0,0,.18);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s cubic-bezier(.2,.8,.2,1)}
-.tag:hover{transform:translateY(calc(-2*var(--n))) rotate(-1.5deg);box-shadow:0 calc(5*var(--n)) 0 rgba(0,0,0,.22),0 calc(10*var(--n)) calc(18*var(--n)) rgba(0,0,0,.2)}
-.tag:active{transform:translateY(var(--n));box-shadow:0 var(--n) 0 rgba(0,0,0,.18),0 calc(3*var(--n)) calc(8*var(--n)) rgba(0,0,0,.16)}
-.t1{left:calc(30*var(--n));top:calc(7*var(--n))}
-.t2{left:calc(233*var(--n));top:calc(7*var(--n))}
-.t3{right:calc(244*var(--n));top:calc(7*var(--n))}
-.t4{right:calc(32*var(--n));top:calc(7*var(--n))}
-.logo{position:absolute;left:50%;top:calc(14*var(--n));transform:translateX(-50%);font-weight:600;font-size:calc(19*var(--n));letter-spacing:.14em;color:#fff;opacity:0;pointer-events:none;transition:opacity .4s}
-body.is-case .logo{opacity:1;pointer-events:auto}
-.hint{position:absolute;left:50%;bottom:calc(22*var(--n));transform:translateX(-50%);display:flex;align-items:center;gap:calc(12*var(--n));font-size:calc(12*var(--n));letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#fff;opacity:.85;white-space:nowrap}
-.hint i{position:relative;display:block;width:calc(1.5*var(--n));height:calc(22*var(--n));background:rgba(255,255,255,.35);overflow:hidden}
-.hint i::after{content:"";position:absolute;left:0;top:-40%;width:100%;height:40%;background:#fff;animation:drip 1.6s cubic-bezier(.6,0,.4,1) infinite}
-@keyframes drip{to{top:100%}}
-body.is-case .hint,body.busy .hint{visibility:hidden}
-
-/* case ui */
-.ticket{position:absolute;right:calc(32*var(--n));top:calc(98*var(--n));width:calc(348*var(--n));height:calc(182*var(--n));background:#fff;color:var(--ink);border-radius:calc(3*var(--n));box-shadow:0 calc(18*var(--n)) calc(40*var(--n)) rgba(0,0,0,.28);padding:calc(26*var(--n)) calc(34*var(--n)) 0 calc(44*var(--n));transform-origin:50% 0;opacity:0}
-.ticket i{position:absolute;width:calc(21*var(--n));height:calc(21*var(--n));border-radius:50%;background:var(--green-800);box-shadow:inset 0 calc(2*var(--n)) calc(3*var(--n)) rgba(0,0,0,.35)}
-.ticket i:nth-of-type(1){left:calc(12*var(--n));top:calc(12*var(--n))}
-.ticket i:nth-of-type(2){right:calc(12*var(--n));top:calc(12*var(--n))}
-.ticket i:nth-of-type(3){left:calc(12*var(--n));bottom:calc(12*var(--n))}
-.ticket i:nth-of-type(4){right:calc(12*var(--n));bottom:calc(12*var(--n))}
-.ticket h2{font-family:'Anton',sans-serif;font-weight:400;font-size:calc(50*var(--n));line-height:1;letter-spacing:-.01em;white-space:nowrap}
-.ticket .rows{margin-top:calc(8*var(--n))}
-.ticket .rows div{text-align:right;font-weight:700;font-size:calc(12*var(--n));letter-spacing:.02em;padding:calc(4*var(--n)) 0 calc(3*var(--n));border-bottom:1.5px dotted #2a2a2a}
-.desc{position:absolute;left:calc(28*var(--n));top:calc(326*var(--n));width:calc(172*var(--n));color:#fff}
-.desc>*{opacity:0}
-.desc .k{font-weight:700;font-size:calc(17*var(--n));letter-spacing:-.02em}
-.desc p{margin-top:calc(14*var(--n));font-size:calc(15*var(--n));line-height:1.36;font-weight:500;color:rgba(255,255,255,.92)}
-.desc .num{margin-top:calc(22*var(--n));font-size:calc(12*var(--n));letter-spacing:.16em;font-weight:700;color:rgba(255,255,255,.7)}
-.nav-case{position:absolute;bottom:calc(150*var(--n));display:flex;flex-direction:column;align-items:center;gap:calc(9*var(--n));opacity:0;pointer-events:none;transition:opacity .3s;color:#fff}
-body.is-case .nav-case{opacity:1;pointer-events:auto}
-body.is-case .nav-case.dim{opacity:.45}
-.nav-case.prev{left:calc(95*var(--n))}
-.nav-case.next{right:calc(95*var(--n))}
-.nav-case .c{width:calc(50*var(--n));height:calc(50*var(--n));border-radius:50%;border:1.6px solid rgba(255,255,255,.9);display:grid;place-items:center;transition:transform .25s,background .25s}
-.nav-case .c svg{width:calc(24*var(--n));height:calc(24*var(--n));fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.nav-case span.l{font-weight:600;font-size:calc(15*var(--n));line-height:1.05;text-align:center}
-.nav-case.next .c{background:#fff;color:var(--green-800)}
-.nav-case.next:hover .c{background:var(--mint)}
-.nav-case:hover .c{transform:scale(1.08)}
-
-/* mobile-only copies */
-.m-only{display:none}
-.mback{position:absolute;inset:0;pointer-events:none;display:none}
-
-@media(max-width:820px){
-  .stage{background:#0b3b2a}
-  .stage::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#1b4a34 0%,#1b4a34 55%,#2f6a50 80%,#7fb79d 100%);opacity:0;transition:opacity 1.6s}
-  .stage.m-case::before{opacity:1}
-  .frame>svg.wm,.frame>.script,.frame>.badge{display:none}
-  .mback{display:block}
-  .m-only{display:block}
-  .mwm{position:absolute;left:3vw;width:94vw;top:calc(12px + 96*var(--n));height:auto;overflow:visible}
-  .mwm text{font-size:240px}
-  .mscript{position:absolute;right:6vw;top:calc(12px + 96*var(--n) + 14vw);font-family:'Caveat Brush',cursive;font-size:11vw;line-height:1;color:#fff;transform:rotate(-7deg);text-shadow:0 2px 10px rgba(0,0,0,.2);white-space:nowrap}
-  .m-badge{position:absolute;right:2vw;top:calc(12px + 96*var(--n) + 9vw);width:27vw;height:calc(27vw*1030/582)}
-  .m-badge .badge{left:0;top:0;scale:var(--mbs);translate:calc(-288px + 13.5vw) 0}
-  .tag{font-size:13px;height:30px;padding:0 12px}
-  .t1{left:12px;top:12px}.t2{right:12px;left:auto;top:12px}
-  .t3{left:12px;right:auto;top:calc(12px + 44*var(--n))}.t4{right:12px;top:calc(12px + 44*var(--n))}
-  body.is-case .t3,body.is-case .t4{visibility:hidden}
-  .logo{display:none}
-  .hint{bottom:18px;font-size:11px}
-  .ticket{right:auto;left:0;margin:0 auto;top:62px;width:min(86vw,360px);height:auto;padding:22px 26px 16px 36px;border-radius:3px}
-  .ticket i{width:15px;height:15px}
-  .ticket i:nth-of-type(1){left:9px;top:9px}.ticket i:nth-of-type(2){right:9px;top:9px}.ticket i:nth-of-type(3){left:9px;bottom:9px}.ticket i:nth-of-type(4){right:9px;bottom:9px}
-  .ticket h2{font-size:38px}
-  .ticket .rows{margin-top:6px}
-  .ticket .rows div{font-size:11px;padding:3px 0 2px}
-  .desc{left:0;right:0;margin:0 auto;top:calc(62px + var(--th) + 18px);width:min(86vw,360px);text-align:left}
-  .desc .k{font-size:15px}.desc p{font-size:13.5px;margin-top:8px}.desc .num{display:none}
-  .nav-case{bottom:calc(env(safe-area-inset-bottom,0px) + 2.2vh);flex-direction:row;gap:10px}
-  .nav-case.prev{left:6vw}.nav-case.next{right:6vw;flex-direction:row-reverse}
-  .nav-case .c{width:42px;height:42px}.nav-case .c svg{width:20px;height:20px}
-  .nav-case span.l{font-size:12.5px;white-space:nowrap}
-  .nav-case span.l br{display:none}
-}
-
-/* sheet (about / contact) */
-.sheet{position:fixed;inset:0;z-index:15;background:rgba(6,32,22,.95);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;padding:calc(84*var(--n)) clamp(20px,6vw,90px) 90px;color:#fff}
-.sheet.on{opacity:1;visibility:visible}
-.sheet .in{max-width:1040px;margin:0 auto;display:none}
-.sheet .in.on{display:block;animation:sin .7s cubic-bezier(.2,.8,.2,1) both}
-@keyframes sin{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.sheet .eb{font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);margin-bottom:10px}
-.sheet h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(44px,8vw,104px);line-height:.98;text-transform:uppercase;letter-spacing:-.005em;margin-bottom:26px}
-.sheet h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(26px,3.6vw,40px);text-transform:uppercase;margin:56px 0 18px;letter-spacing:.01em}
-.sheet p.lead{font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:rgba(255,255,255,.86);max-width:64ch;margin-bottom:14px;font-weight:500}
-.sheet .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:26px}
-.sheet .stats div{border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:16px 18px;background:rgba(255,255,255,.04)}
-.sheet .stats b{display:block;font-family:'Anton',sans-serif;font-weight:400;font-size:38px;line-height:1}
-.sheet .stats span{font-size:12.5px;color:rgba(255,255,255,.65)}
-.sheet .grp{display:grid;gap:14px}
-@media(min-width:800px){.sheet .grp{grid-template-columns:1fr 1fr}}
-.sheet .box{border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:20px 22px;background:rgba(255,255,255,.035)}
-.sheet .box h3{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mint);margin-bottom:12px;font-weight:700}
-.sheet .tg{display:flex;flex-wrap:wrap;gap:8px}
-.sheet .tg span{font-size:13px;padding:6px 12px;border-radius:999px;background:#fff;color:var(--ink);font-weight:600}
-.sheet .item{display:grid;gap:4px;padding:20px 0;border-top:1px solid rgba(255,255,255,.14)}
-@media(min-width:800px){.sheet .item{grid-template-columns:230px 1fr;gap:30px}}
-.sheet .item:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
-.sheet .when{font-size:13px;color:var(--mint);font-weight:600;letter-spacing:.04em}
-.sheet .item h4{font-size:20px;font-weight:700;letter-spacing:-.01em}
-.sheet .item .co{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:8px}
-.sheet .item ul{padding-left:18px;display:grid;gap:6px;color:rgba(255,255,255,.84);font-size:15px;max-width:70ch}
-.sheet .certs{list-style:none;display:grid;gap:8px}
-@media(min-width:800px){.sheet .certs{grid-template-columns:1fr 1fr}}
-.sheet .certs li{display:flex;justify-content:space-between;gap:14px;padding:13px 16px;border:1px solid rgba(255,255,255,.14);border-radius:6px;background:rgba(255,255,255,.035);font-size:14px}
-.sheet .certs em{font-style:normal;color:rgba(255,255,255,.55);white-space:nowrap;font-size:12.5px}
-.sheet .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.sheet .cta{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font-weight:650;font-size:16px;padding:14px 24px;box-shadow:0 3px 0 rgba(0,0,0,.2);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
-.sheet .cta:hover{transform:translateY(-2px) rotate(-1deg)}
-.sheet .cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.7);box-shadow:none}
-body.sheet-open .ticket,body.sheet-open .desc,body.sheet-open .nav-case,body.sheet-open .logo,body.sheet-open .hint{visibility:hidden}
-@media(max-width:820px){.sheet{padding-top:112px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="stage" id="stage">
+<canvas id="bg"></canvas>
+<div class="blobs"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div id="prog"></div>
+<div class="cur" id="cur"></div><div class="ring" id="ring"></div>
+<div class="wipe" id="wipe"><b></b><b></b><b></b><b></b><b></b><b></b></div>
+<div class="wtitle" id="wtitle"></div>
 
-  <div class="mback m-only" id="mback">
-    <svg class="mwm" id="mwm" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true">
-      <defs><linearGradient id="gm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset=".5" stop-color="#f1f5f3" stop-opacity=".9"/><stop offset="1" stop-color="#d7e6de" stop-opacity=".3"/></linearGradient></defs>
-      <text x="10" y="210" textLength="1420" lengthAdjust="spacingAndGlyphs" fill="url(#gm)">DUSHYANT</text>
-    </svg>
-    <div class="m-badge" id="mbadge"></div>
-  </div>
-
-  <div class="frame d-fade" id="frame">
-    <img class="plate" id="plate" alt="" draggable="false">
-    <svg class="wm" id="wm" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-label="DUSHYANT BHASKAR">
-      <defs><linearGradient id="gw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="1"/><stop offset=".5" stop-color="#f1f5f3" stop-opacity=".9"/><stop offset="1" stop-color="#d7e6de" stop-opacity=".28"/></linearGradient></defs>
-      <text x="14" y="214" textLength="1412" lengthAdjust="spacingAndGlyphs" fill="url(#gw)">DUSHYANT</text>
-    </svg>
-    <img class="cut" id="cut" alt="" draggable="false">
-    <div class="badge" id="badge">
-      <img id="badgeimg" alt="" draggable="false">
-      <div class="card">
-        <h4>ANALYST<br>CARD</h4>
-        <div class="yr">2026</div>
-        <div class="role">BUSINESS ANALYST // CS ENGINEER</div>
-        <div class="ph"></div>
-        <div class="row"><span>NAME</span><b>DUSHYANT BHASKAR</b></div>
-        <div class="row"><span>FOCUS</span><b>BUSINESS ANALYSIS</b></div>
-        <div class="row"><span>IN</span><b>/DUSHYANT-BHASKAR</b></div>
-        <div class="row"><span>EMAIL</span><b style="font-size:7.2px">BHASKARDUSHYANT40@GMAIL.COM</b></div>
-      </div>
-      <div class="hit"></div>
-    </div>
-    <div class="script" id="script">business-analyst</div>
-    <video class="trans" id="trans" muted playsinline preload="auto"></video>
-    <img class="caseplate" id="caseplate" alt="" draggable="false">
-    <div class="screen" id="screen">
-      <video crossorigin="anonymous" muted loop playsinline preload="none"></video>
-      <video crossorigin="anonymous" muted loop playsinline preload="none"></video>
-      <video crossorigin="anonymous" muted loop playsinline preload="none"></video>
-      <div class="flash" id="flash"></div>
-    </div>
-    <div class="screen-hit" id="screenhit"></div>
-  </div>
-
-  <div class="sheet" id="sheet">
-    <div class="in" data-p="about">
-      <div class="eb">About me</div>
-      <h1>Analyst who codes</h1>
-      <p class="lead">I am a Business Analyst and Computer Science Engineering graduate (B.Tech, Manipal University Jaipur) with internship experience in sales forecasting, inventory optimisation and KPI reporting.</p>
-      <p class="lead">I am skilled in SQL, Python, Excel and Power BI, and I turn data into decisions that support strategy and cross-functional teams. I completed an international exchange semester in Austria (Montanuniversität Leoben) and MBA-level coursework, and I am now at NEOMA Business School in Reims, France.</p>
-      <p class="lead">I have a strong academic background in mathematics and computer science, and I enjoy using data-driven insights to solve real-world problems.</p>
-      <p class="lead">My paper on SIBAD was published at CE2CT 2026 (IEEE).</p>
-      <div class="stats"><div><b>8.34</b><span>CGPA, B.Tech CSE</span></div><div><b>95%</b><span>accuracy, image forgery CNN</span></div><div><b>3</b><span>internships</span></div><div><b>3</b><span>languages: English, Hindi, French (A2)</span></div></div>
-
-      <h2>Skills</h2>
-      <div class="grp">
-        <div class="box"><h3>Business Analysis</h3><div class="tg"><span>KPI tracking</span><span>Reporting and dashboards</span><span>Data-driven decision support</span><span>Sales trend analysis</span><span>Inventory optimisation</span><span>Cross-functional collaboration</span></div></div>
-        <div class="box"><h3>Data &amp; Analytics</h3><div class="tg"><span>SQL (MySQL)</span><span>Python</span><span>Microsoft Excel (advanced models, automated reports)</span><span>Power BI</span><span>IBM Cognos</span><span>Exploratory Data Analysis</span><span>Data gathering</span><span>Data cleaning</span><span>Predictive modelling</span></div></div>
-        <div class="box"><h3>Machine Learning</h3><div class="tg"><span>Supervised learning</span><span>Unsupervised learning</span><span>Feature engineering</span><span>Feature selection</span><span>CNNs</span><span>Statistics</span><span>Probability</span><span>Linear algebra</span><span>Matrices</span></div></div>
-        <div class="box"><h3>Programming &amp; Systems</h3><div class="tg"><span>Python</span><span>Java</span><span>C/C++</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>PHP</span><span>MERN stack</span><span>OOP (Java, Python)</span><span>Linux</span><span>Bash scripting</span><span>Process control and scheduling</span><span>Threads and deadlock</span><span>Ansible</span><span>CCNA</span></div></div>
-      </div>
-
-      <h2>Experience</h2>
-      <div>
-        <div class="item"><div class="when">1 Feb 2026 - 1 Jun 2026</div><div><h4>Business Analyst Intern</h4><div class="co">Zillionaire Global India Pvt. Ltd.</div><ul><li>Developed and implemented predictive models in Python and SQL to forecast future sales trends, optimise inventory levels and identify high-potential products.</li><li>Designed and maintained advanced Excel models and automated reports to track Key Performance Indicators (KPIs) for stakeholders.</li></ul></div></div>
-        <div class="item"><div class="when">1 Jun 2025 - 15 Aug 2025</div><div><h4>Software Development Engineer Intern</h4><div class="co">Exaflair Technologies, Zirakpur</div><ul><li>Worked on the development of web applications using the MERN stack for the company's portfolio projects.</li><li>Conducted research tasks for product development, contributing to validation and innovation.</li></ul></div></div>
-        <div class="item"><div class="when">15 May 2024 - 15 Aug 2024</div><div><h4>Web Development Intern</h4><div class="co">Zillionaire Global India Pvt. Ltd.</div><ul><li>Worked on the front-end development of the official website zillionaireindia.com.</li><li>Worked on image and video classification for the Zillionaire India website.</li></ul></div></div>
-      </div>
-
-      <h2>Projects</h2>
-      <div>
-        <div class="item"><div class="when">Python, ML, Deep Learning</div><div><h4>Image Forgery Detection</h4><ul><li>A machine learning model that automatically classifies an image as either authentic (original) or forged (manipulated).</li><li>Trained with a modified Convolutional Neural Network (CNN) technique, it reached an accuracy of 95%.</li></ul></div></div>
-        <div class="item"><div class="when">Python, ML</div><div><h4>Face Mask Detector</h4><ul><li>A machine learning model that analyses the presence of a face mask.</li><li>A CNN-based project using a Single Shot Detector to inspect whether or not a person is wearing a face mask.</li></ul></div></div>
-        <div class="item"><div class="when">Excel, Analysis</div><div><h4>Business Failures Analysis</h4><ul><li>An Excel model and report on why businesses fail, built with a team for the Data Driven Decision Making course at NEOMA.</li></ul></div></div>
-      </div>
-
-      <h2>Education</h2>
-      <div>
-        <div class="item"><div class="when">2026 - present</div><div><h4>NEOMA Business School</h4><div class="co">Reims, France</div></div></div>
-        <div class="item"><div class="when">Aug 2022 - Jul 2026</div><div><h4>B.Tech, Computer Science Engineering</h4><div class="co">Manipal University Jaipur | CGPA 8.34</div></div></div>
-        <div class="item"><div class="when">Oct 2025 - Jan 2026</div><div><h4>Exchange Program (7th semester)</h4><div class="co">Montanuniversität Leoben, Austria</div></div></div>
-        <div class="item"><div class="when">Jul 2009 - Apr 2021</div><div><h4>Senior Secondary (CBSE, Science)</h4><div class="co">Neerja Modi School, Jaipur | Class 10: 92.4%, Class 12: 93.2%</div></div></div>
-      </div>
-
-      <h2>Certifications</h2>
-      <ul class="certs">
-        <li>MBA Essentials, Coursera<em>Dec 2025</em></li>
-        <li>Cisco Certified Network Associate (CCNA)<em>Apr 2025</em></li>
-        <li>Data Visualization and Dashboards with Excel and Cognos<em>Nov 2024</em></li>
-        <li>Exploratory Data Analysis for Machine Learning<em>Nov 2024</em></li>
-        <li>Key Industry 4.0 Technologies in Manufacturing 1<em>Nov 2024</em></li>
-        <li>Database Management Systems, Oracle Foundations<em>Mar 2024</em></li>
-        <li>Red Hat System Administration I (RH124)<em>Feb 2024</em></li>
-        <li>Red Hat Enterprise Linux Automation with Ansible (RH294)<em>Mar 2024</em></li>
-        <li>Mathematics for Linear Algebra, Coursera<em>Mar 2023</em></li>
-        <li>Ordered Data Structures, Coursera<em>Feb 2023</em></li>
-        <li>C Programming and Assembly Language, NPTEL<em>Sep 2024</em></li>
-      </ul>
-    </div>
-
-    <div class="in" data-p="contact">
-      <div class="eb">Contact me</div>
-      <h1>Let's turn your data into decisions</h1>
-      <p class="lead">Open to internships and full-time roles, in France or remote. Based in Reims, France, originally from Jaipur, India.</p>
-      <div class="ctas">
-        <button class="cta" id="copyMail">Copy email address</button>
-        <a class="cta" href="mailto:bhaskardushyant40@gmail.com">bhaskardushyant40@gmail.com</a>
-        <a class="cta ghost" href="https://www.linkedin.com/in/dushyant-bhaskar-677a12251/" target="_blank" rel="noopener">LinkedIn ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="ui" id="ui">
-    <div class="m-only mscript pre" id="mscript">business-analyst</div>
-    <button class="tag t1 pre" id="tStudio">my studio</button>
-    <button class="tag t2 pre" id="tPortfolio">portfolio</button>
-    <button class="tag t3 pre" id="tAbout">about me</button>
-    <button class="tag t4 pre" id="tContact">contact me</button>
-    <button class="logo" id="logo">DUSHYANT</button>
-    <div class="hint pre" id="hint"><i></i>scroll into the work</div>
-
-    <div class="ticket" id="ticket"><i></i><i></i><i></i><i></i><h2 id="tTitle"></h2><div class="rows" id="tRows"></div></div>
-    <div class="desc" id="desc"><div class="k" id="dKey"></div><p id="dText"></p><div class="num" id="dNum"></div></div>
-    <button class="nav-case prev" id="prev" aria-label="previous case"><span class="c"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span><span class="l">previous <br>case</span></button>
-    <button class="nav-case next" id="next" aria-label="next case"><span class="c"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="l">next <br>case</span></button>
-  </div>
+<div class="top"><nav class="dock" id="dock" aria-label="Pages">
+  <a class="logo" href="#home" data-go="home">DB</a>
+  <button class="tab" data-go="home">Home</button>
+  <button class="tab" data-go="about">About</button>
+  <button class="tab" data-go="skills">Skills</button>
+  <button class="tab" data-go="experience">Experience</button>
+  <button class="tab" data-go="projects">Projects</button>
+  <button class="tab" data-go="education">Education</button>
+  <button class="tab" data-go="contact">Talk</button>
+</nav></div>
+<div class="tools">
+  <button class="tbtn" id="themeBtn" title="Change theme" aria-label="Change theme"><span class="sw"></span></button>
+  <button class="tbtn" id="palBtn" title="Command palette (Ctrl/Cmd + K)" aria-label="Open command palette">⌘K</button>
 </div>
+
+<main>
+
+<!-- HOME -->
+<section class="view" id="v-home">
+  <div class="hero">
+    <div>
+      <div class="pill rv"><i></i>Open to internships and full-time roles, in France or remote</div>
+      <h1 class="rv" data-d="1"><span>I turn data</span><span class="g">into decisions</span><span>for growing businesses</span></h1>
+      <div class="role rv" data-d="2">Dushyant Bhaskar, <b id="typed"></b><span class="caret"></span></div>
+      <div class="cta rv" data-d="3">
+        <button class="btn pri mag" data-go="projects">See my work →</button>
+        <button class="btn mag" data-go="contact">Get in touch</button>
+        <a class="btn mag" href="https://www.linkedin.com/in/dushyant-bhaskar-677a12251/" target="_blank" rel="noopener">View LinkedIn ↗</a>
+      </div>
+      <p class="hint rv" data-d="4">Tip: press <kbd>←</kbd> <kbd>→</kbd> to switch pages, or <kbd>Ctrl/⌘</kbd> + <kbd>K</kbd> for the command palette.</p>
+    </div>
+    <div class="avwrap rv" data-d="2">
+      <div class="av" id="av">
+        <img src="assets/dushyant.jpeg" alt="Portrait of Dushyant Bhaskar">
+        <div class="fl a"><i>SQL</i> MySQL</div>
+        <div class="fl b"><i>Python</i> ML</div>
+        <div class="fl c"><i>Power BI</i> + Excel</div>
+      </div>
+    </div>
+  </div>
+  <div class="marq rv"><div id="mq"></div></div>
+  <div class="homefoot rv"><span>3 internships • 2 ML projects • 10+ certifications</span><span>Reims, France • Jaipur, India</span></div>
+</section>
+
+<!-- ABOUT -->
+<section class="view" id="v-about">
+  <div class="eyebrow rv">About</div>
+  <h2 class="t rv">Analyst who <span class="g">codes</span></h2>
+  <div class="ab">
+    <div>
+      <p class="rv">I am a Business Analyst and Computer Science Engineering graduate (B.Tech, Manipal University Jaipur) with internship experience in sales forecasting, inventory optimisation and KPI reporting.</p>
+      <p class="rv">I am skilled in SQL, Python, Excel and Power BI, and I turn data into decisions that support strategy and cross-functional teams. I completed an international exchange semester in Austria (Montanuniversität Leoben) and MBA-level coursework, and I am now at NEOMA Business School in Reims, France.</p>
+      <p class="rv">I have a strong academic background in mathematics and computer science, and I enjoy using data-driven insights to solve real-world problems.</p>
+      <p class="rv">My paper on SIBAD was published at CE2CT 2026 (IEEE).</p>
+    </div>
+    <div class="stats">
+      <div class="card stat rv"><b class="count" data-to="8.34" data-dec="2">0</b><span>CGPA, B.Tech CSE</span></div>
+      <div class="card stat rv" data-d="1"><b class="count" data-to="95" data-suf="%">0</b><span>accuracy, image forgery CNN</span></div>
+      <div class="card stat rv" data-d="2"><b class="count" data-to="3">0</b><span>internships</span></div>
+      <div class="card stat rv" data-d="3"><b class="count" data-to="3">0</b><span>languages: English, Hindi, French (A2)</span></div>
+    </div>
+  </div>
+  <div class="term rv">
+    <div class="thead"><i></i><i></i><i></i><span>dushyant@portfolio ~ try typing "help"</span></div>
+    <div class="tbody" id="tb"><div class="o">Welcome. Type <span class="c">help</span> to see what you can ask me.</div></div>
+  </div>
+  <div class="next"><button class="p" data-go="home"><small>Previous</small>← Home</button><button data-go="skills"><small>Next</small>Skills →</button></div>
+</section>
+
+<!-- SKILLS -->
+<section class="view" id="v-skills">
+  <div class="eyebrow rv">Skills</div>
+  <h2 class="t rv">Tools <span class="g">I use</span></h2>
+  <div class="chips rv" id="chips">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="biz">Business Analysis</button>
+    <button class="chip" data-f="data">Data &amp; Analytics</button>
+    <button class="chip" data-f="ml">Machine Learning</button>
+    <button class="chip" data-f="code">Programming &amp; Systems</button>
+  </div>
+  <div class="sk">
+    <div class="card rv tilt" data-cat="biz"><h3>Business Analysis</h3><div class="tags"><span>KPI tracking</span><span>Reporting and dashboards</span><span>Data-driven decision support</span><span>Sales trend analysis</span><span>Inventory optimisation</span><span>Cross-functional collaboration</span></div></div>
+    <div class="card rv tilt" data-cat="data" data-d="1"><h3>Data &amp; Analytics</h3><div class="tags"><span>SQL (MySQL)</span><span>Python</span><span>Microsoft Excel (advanced models, automated reports)</span><span>Power BI</span><span>IBM Cognos</span><span>Exploratory Data Analysis</span><span>Data gathering</span><span>Data cleaning</span><span>Predictive modelling</span></div></div>
+    <div class="card rv tilt" data-cat="ml" data-d="2"><h3>Machine Learning</h3><div class="tags"><span>Supervised learning</span><span>Unsupervised learning</span><span>Feature engineering</span><span>Feature selection</span><span>CNNs</span><span>Statistics</span><span>Probability</span><span>Linear algebra</span><span>Matrices</span></div></div>
+    <div class="card rv tilt" data-cat="code" data-d="3"><h3>Programming &amp; Systems</h3><div class="tags"><span>Python</span><span>Java</span><span>C/C++</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>PHP</span><span>MERN stack</span><span>OOP (Java, Python)</span><span>Linux</span><span>Bash scripting</span><span>Process control and scheduling</span><span>Threads and deadlock</span><span>Ansible</span><span>CCNA</span></div></div>
+  </div>
+  <div class="next"><button class="p" data-go="about"><small>Previous</small>← About</button><button data-go="experience"><small>Next</small>Experience →</button></div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="view" id="v-experience">
+  <div class="eyebrow rv">Experience</div>
+  <h2 class="t rv">Where I <span class="g">worked</span></h2>
+  <div class="tl">
+    <div class="xp card rv open">
+      <button><span class="when">1 Feb 2026 - 1 Jun 2026</span><h3>Business Analyst Intern</h3><span class="co">Zillionaire Global India Pvt. Ltd.</span><span class="pl">+</span></button>
+      <div class="more"><div><ul><li>Developed and implemented predictive models in Python and SQL to forecast future sales trends, optimise inventory levels and identify high-potential products.</li><li>Designed and maintained advanced Excel models and automated reports to track Key Performance Indicators (KPIs) for stakeholders.</li></ul></div></div>
+    </div>
+    <div class="xp card rv" data-d="1">
+      <button><span class="when">1 Jun 2025 - 15 Aug 2025</span><h3>Software Development Engineer Intern</h3><span class="co">Exaflair Technologies, Zirakpur</span><span class="pl">+</span></button>
+      <div class="more"><div><ul><li>Worked on the development of web applications using the MERN stack for the company's portfolio projects.</li><li>Conducted research tasks for product development, contributing to validation and innovation.</li></ul></div></div>
+    </div>
+    <div class="xp card rv" data-d="2">
+      <button><span class="when">15 May 2024 - 15 Aug 2024</span><h3>Web Development Intern</h3><span class="co">Zillionaire Global India Pvt. Ltd.</span><span class="pl">+</span></button>
+      <div class="more"><div><ul><li>Worked on the front-end development of the official website zillionaireindia.com.</li><li>Worked on image and video classification for the Zillionaire India website.</li></ul></div></div>
+    </div>
+  </div>
+  <div class="next"><button class="p" data-go="skills"><small>Previous</small>← Skills</button><button data-go="projects"><small>Next</small>Projects →</button></div>
+</section>
+
+<!-- PROJECTS -->
+<section class="view" id="v-projects">
+  <div class="eyebrow rv">Projects</div>
+  <h2 class="t rv">Selected <span class="g">work</span></h2>
+  <div class="cards">
+    <div class="card pc tilt rv"><span class="n">01</span><h3>Image Forgery Detection</h3><p>A machine learning model that automatically classifies an image as either authentic (original) or forged (manipulated). Trained with a modified Convolutional Neural Network (CNN) technique, it reached an accuracy of 95%.</p><div class="tags"><span>Python</span><span>ML</span><span>Deep Learning</span></div></div>
+    <div class="card pc tilt rv" data-d="1"><span class="n">02</span><h3>Face Mask Detector</h3><p>A machine learning model that analyses the presence of a face mask. It is a CNN-based project using a Single Shot Detector to inspect whether or not a person is wearing a face mask.</p><div class="tags"><span>Python</span><span>ML</span></div></div>
+    <div class="card pc tilt rv" data-d="2"><span class="n">03</span><h3>Business Failures Analysis</h3><p>An Excel model and report on why businesses fail, built with a team for the Data Driven Decision Making course at NEOMA.</p><div class="tags"><span>Excel</span><span>Analysis</span></div></div>
+  </div>
+
+  <div class="card lab rv">
+    <div class="eyebrow">Interactive</div>
+    <h3>Sales forecast playground</h3>
+    <p>The kind of forecasting I do as a business analyst. Drag the sliders and watch the 6-month forecast and its confidence band react.</p>
+    <div class="labgrid">
+      <div class="ctl">
+        <label>Baseline demand <b id="o1">100</b></label><input type="range" id="s1" min="40" max="200" value="100">
+        <label>Monthly growth <b id="o2">3%</b></label><input type="range" id="s2" min="-5" max="12" value="3">
+        <label>Seasonality <b id="o3">20%</b></label><input type="range" id="s3" min="0" max="50" value="20">
+        <label>Noise (uncertainty) <b id="o4">8%</b></label><input type="range" id="s4" min="0" max="25" value="8">
+        <button class="btn mag" id="reseed" style="margin-top:22px">↻ New random history</button>
+      </div>
+      <div>
+        <div class="chartbox"><canvas id="fc"></canvas></div>
+        <div class="kpis"><div><b id="k1">-</b>forecast total (6 mo)</div><div><b id="k2">-</b>vs last 6 months</div><div><b id="k3">-</b>peak month</div></div>
+        <div class="note">Demo with synthetic data, built in plain JavaScript. Not real company data.</div>
+      </div>
+    </div>
+  </div>
+  <div class="next"><button class="p" data-go="experience"><small>Previous</small>← Experience</button><button data-go="education"><small>Next</small>Education →</button></div>
+</section>
+
+<!-- EDUCATION -->
+<section class="view" id="v-education">
+  <div class="eyebrow rv">Education</div>
+  <h2 class="t rv">Learning <span class="g">path</span></h2>
+  <div class="ed">
+    <div class="card er rv"><div class="when">2026 - present</div><div><h3>NEOMA Business School</h3><div class="co">Reims, France</div></div></div>
+    <div class="card er rv" data-d="1"><div class="when">Aug 2022 - Jul 2026</div><div><h3>B.Tech, Computer Science Engineering</h3><div class="co">Manipal University Jaipur | CGPA 8.34</div></div></div>
+    <div class="card er rv" data-d="2"><div class="when">Oct 2025 - Jan 2026</div><div><h3>Exchange Program (7th semester)</h3><div class="co">Montanuniversität Leoben, Austria</div></div></div>
+    <div class="card er rv" data-d="3"><div class="when">Jul 2009 - Apr 2021</div><div><h3>Senior Secondary (CBSE, Science)</h3><div class="co">Neerja Modi School, Jaipur | Class 10: 92.4%, Class 12: 93.2%</div></div></div>
+  </div>
+  <div class="csearch rv"><h3>Certifications</h3><input id="cs" placeholder="Search certifications..." aria-label="Search certifications"></div>
+  <ul class="certs rv" id="certs">
+    <li>MBA Essentials, Coursera<em>Dec 2025</em></li>
+    <li>Cisco Certified Network Associate (CCNA)<em>Apr 2025</em></li>
+    <li>Data Visualization and Dashboards with Excel and Cognos<em>Nov 2024</em></li>
+    <li>Exploratory Data Analysis for Machine Learning<em>Nov 2024</em></li>
+    <li>Key Industry 4.0 Technologies in Manufacturing 1<em>Nov 2024</em></li>
+    <li>Database Management Systems, Oracle Foundations<em>Mar 2024</em></li>
+    <li>Red Hat System Administration I (RH124)<em>Feb 2024</em></li>
+    <li>Red Hat Enterprise Linux Automation with Ansible (RH294)<em>Mar 2024</em></li>
+    <li>Mathematics for Linear Algebra, Coursera<em>Mar 2023</em></li>
+    <li>Ordered Data Structures, Coursera<em>Feb 2023</em></li>
+    <li>C Programming and Assembly Language, NPTEL<em>Sep 2024</em></li>
+  </ul>
+  <div class="next"><button class="p" data-go="projects"><small>Previous</small>← Projects</button><button data-go="contact"><small>Next</small>Talk →</button></div>
+</section>
+
+<!-- CONTACT -->
+<section class="view" id="v-contact">
+  <div class="eyebrow rv">Talk</div>
+  <div class="ct">
+    <div class="big rv">Let's turn your data <span class="g">into decisions</span></div>
+    <div class="cl">
+      <button class="card rv" id="copyMail" data-d="1"><div><small>Email (click to copy)</small><span class="v">bhaskardushyant40@gmail.com</span></div><span class="ar">↗</span></button>
+      <a class="card rv" data-d="2" href="mailto:bhaskardushyant40@gmail.com"><div><small>Write an email</small><span class="v">Open mail app</span></div><span class="ar">↗</span></a>
+      <a class="card rv" data-d="3" href="https://www.linkedin.com/in/dushyant-bhaskar-677a12251/" target="_blank" rel="noopener"><div><small>LinkedIn</small><span class="v">dushyant-bhaskar</span></div><span class="ar">↗</span></a>
+    </div>
+  </div>
+  <div class="ft"><span>&copy; 2026 Dushyant Bhaskar</span><span>Reims, France • Jaipur, India</span></div>
+  <div class="next"><button class="p" data-go="education"><small>Previous</small>← Education</button><button data-go="home"><small>Back to</small>Home ↑</button></div>
+</section>
+
+</main>
+
+<div class="pal" id="pal"><div class="pbox"><input id="pin" placeholder="Jump to a page, change theme..." autocomplete="off"><div class="pl2" id="plist"></div></div></div>
+<div class="toast" id="toast"></div>
 
 <script>
 (()=>{
-const $=s=>document.querySelector(s);
-const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const EASE='cubic-bezier(.2,.8,.2,1)';
-const CF='https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/';
-const HX=u=>'https://images.higgs.ai/?default=1&output=webp&url='+encodeURIComponent(u)+'&w=2048&q=85';
-const R2='https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/aaaf/';
-const SRC={
-  plate:HX(CF+'hf_20261111_001031_a09dc558-2c69-4e05-83a4-5f01ebdd1363.png'),
-  casePlate:HX(CF+'hf_20261111_001031_4a7c3fd9-2168-4219-9736-096a17bbb0e2.png'),
-  cut:HX(CF+'hf_20261111_001143_ec356b1a-50a2-4b50-82fc-e346c914a406.png'),
-  badge:'https://images.higgs.ai/?default=1&output=webp&url='+encodeURIComponent(CF+'hf_20261111_001143_65c037e6-0768-4b12-9f17-17be132ce16b.png')+'&w=1200&q=85',
-  trans:CF+'hf_20261111_001144_2b054228-95af-41d5-922d-b02979fe485b.mp4'
-};
-const CASES=[
-  {v:R2+'vell-lookbook.mp4',title:'SALES FORECAST',rows:['ZILLIONAIRE GLOBAL','BUSINESS ANALYST INTERN','2026'],key:'// sales forecasting',text:'— predictive models in Python and SQL to forecast sales trends, optimise inventory and spot high-potential products.'},
-  {v:R2+'vasari-vhs-hero.mp4',title:'FORGERY CNN',rows:['PYTHON','MACHINE LEARNING','DEEP LEARNING'],key:'// image forgery detection',text:'— a modified CNN that tells authentic images from manipulated ones, reaching 95% accuracy.'},
-  {v:R2+'living-portrait-hero.mp4',title:'FACE MASK AI',rows:['PYTHON','MACHINE LEARNING','CNN + SSD'],key:'// face mask detector',text:'— a CNN with a Single Shot Detector that checks whether a person is wearing a face mask.'},
-  {v:R2+'vell-lookbook.mp4',title:'FAILURES STUDY',rows:['NEOMA','DATA DRIVEN DECISIONS','2026'],key:'// business failures',text:'— a team Excel model and report on why businesses fail, built for the DDDM course.'},
-  {v:R2+'vasari-vhs-hero.mp4',title:'MERN APPS',rows:['EXAFLAIR TECHNOLOGIES','SOFTWARE DEV INTERN','2025'],key:'// web applications',text:'— web apps built with the MERN stack for the company’s portfolio projects, plus validation research.'},
-  {v:R2+'living-portrait-hero.mp4',title:'WEB + VISION',rows:['ZILLIONAIRE GLOBAL','WEB DEV INTERN','2024'],key:'// zillionaireindia.com',text:'— front end of the company website, plus image and video classification work.'}
-];
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const fine=matchMedia('(pointer:fine)').matches;
+const PAGES=['home','about','skills','experience','projects','education','contact'];
+const NAMES={home:'Home',about:'About',skills:'Skills',experience:'Experience',projects:'Projects',education:'Education',contact:'Talk'};
+const THEMES=['aurora','sunset','matrix','candy'];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
-const root=document.documentElement,stage=$('#stage'),frame=$('#frame'),plate=$('#plate'),cut=$('#cut'),caseplate=$('#caseplate'),
-  trans=$('#trans'),screen=$('#screen'),flash=$('#flash'),wm=$('#wm'),script=$('#script'),badge=$('#badge'),
-  ticket=$('#ticket'),desc=$('#desc'),prevB=$('#prev'),nextB=$('#next'),hint=$('#hint'),
-  mwm=$('#mwm'),mscript=$('#mscript'),mback=$('#mback'),mbadgeBox=$('#mbadge');
-const vids=[...screen.querySelectorAll('video')];
-const V=i=>vids[i%vids.length];
-const tags=['#tStudio','#tPortfolio','#tAbout','#tContact'].map($);
+/* ---------- toast ---------- */
+const toast=$('#toast');let tt;
+function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),2200)}
 
-/* images */
-plate.src=SRC.plate;caseplate.src=SRC.casePlate;cut.src=SRC.cut;$('#badgeimg').src=SRC.badge;
-badge.querySelector('.ph').style.backgroundImage='url("assets/dushyant.jpeg")';
-const mbd=badge.cloneNode(true);mbd.removeAttribute('id');mbd.querySelector('img').removeAttribute('id');mbadgeBox.appendChild(mbd);
+/* ---------- theme ---------- */
+function setTheme(t){document.documentElement.dataset.theme=t;store.set('theme',t);readColors()}
+function nextTheme(){const i=THEMES.indexOf(document.documentElement.dataset.theme);const t=THEMES[(i+1)%THEMES.length];setTheme(t);say('Theme: '+t)}
+$('#themeBtn').onclick=nextTheme;
+const saved=store.get('theme');if(THEMES.includes(saved))document.documentElement.dataset.theme=saved;
 
-/* helpers */
-const isM=()=>innerWidth<=820;
-const wait=ms=>new Promise(r=>setTimeout(r,RM?0:ms));
-const raf2=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
-const E={d:{wm,sc:script,bd:badge},m:{wm:mwm,sc:mscript,bd:mbd}};
-const els=()=>isM()?E.m:E.d;
-function fx(el,kf,opt){const old=el.getAnimations();const a=el.animate(kf,Object.assign({fill:'both',easing:EASE},opt));old.forEach(o=>o.cancel());return a}
-let mode='hero',busy=false,idx=0,transReady=false,sway=null,heroOutAnims=[];
-function setBusy(v){busy=v;document.body.classList.toggle('busy',v)}
-
-/* case ui */
-function fillCase(i){const c=CASES[i];$('#tTitle').textContent=c.title;$('#tRows').innerHTML=c.rows.map(r=>`<div>${r}</div>`).join('');
-  $('#dKey').textContent=c.key;$('#dText').textContent=c.text;$('#dNum').textContent=String(i+1).padStart(2,'0')+' / '+String(CASES.length).padStart(2,'0');prevB.classList.toggle('dim',i===0)}
-fillCase(0);
-function caseIn(i,first){
-  fx(ticket,[{opacity:0,transform:'translateY(-60px) rotate(-6deg)'},{opacity:1,transform:'translateY(6px) rotate(1.2deg)',offset:.7},{opacity:1,transform:'none'}],{duration:800,delay:first?150:0});
-  [...desc.children].forEach((c,k)=>fx(c,[{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:600,delay:(first?250:80)+k*70}));
-}
-function caseOut(){
-  fx(ticket,[{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-40px) rotate(4deg)'}],{duration:380,easing:'cubic-bezier(.5,0,.75,0)'});
-  [...desc.children].forEach((c,k)=>fx(c,[{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-10px)'}],{duration:300,delay:k*40,easing:'cubic-bezier(.5,0,.75,0)'}));
-}
-function ensure(i){const v=V(i);if(!v.getAttribute('src')){v.src=CASES[i].v;v.preload='auto';v.load()}}
-function playOnly(i){ensure(i);vids.forEach((v,k)=>{if(k!==i%vids.length){v.pause()}});const v=V(i);try{v.currentTime=0}catch(e){}v.muted=true;const p=v.play();if(p&&p.catch)p.catch(()=>{})}
-
-/* pose */
-function pose(m){
-  const W=innerWidth,H=innerHeight;
-  if(!isM()){
-    const cover=Math.max(W/1440,H/810),u=Math.min(W/1440,H/900);
-    if(m==='hero'){const s=cover;return{s,x:(W-1440*s)/2,y:0}}
-    const top=66*u,fit=(H-top-28*u)/(762-79);let s,y;
-    if(fit>=cover){s=cover;y=Math.min(0,Math.max(H-810*s,top-79*s))}else{s=fit;y=top-79*fit}
-    return{s,x:(W-1440*s)/2,y};
+/* ---------- animated background network ---------- */
+const cv=$('#bg'),cx=cv.getContext('2d');let W,H,DPR,pts=[],C1='#22d3ee',C2='#a78bfa';
+const mouse={x:-999,y:-999};
+function readColors(){const s=getComputedStyle(document.documentElement);C1=s.getPropertyValue('--a1').trim();C2=s.getPropertyValue('--a2').trim()}
+function hexA(h,a){const n=parseInt(h.slice(1),16);return `rgba(${n>>16},${n>>8&255},${n&255},${a})`}
+function size(){DPR=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0);
+  const n=Math.min(130,Math.floor(W*H/14000));pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.6+.6,k:Math.random()}))}
+function frame(){
+  cx.clearRect(0,0,W,H);
+  for(const p of pts){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.hypot(dx,dy);
+    if(d<140&&d>0){p.x+=dx/d*1.1;p.y+=dy/d*1.1}
   }
-  if(m==='hero'){const s=Math.min(W/650,.62*H/810);return{s,x:W/2-805*s,y:H-790*s}}
-  const th=ticket.offsetHeight;root.style.setProperty('--th',th+'px');
-  const dh=desc.offsetHeight,navH=.022*H+42+22,uiBottom=62+th+18+Math.max(60,dh)+14;
-  const s=Math.min((W-28)/905,Math.max(.2,(H-navH-uiBottom)/(762-95)));
-  return{s,x:W/2-720*s,y:H-navH-762*s};
-}
-function place(m){
-  const p=pose(m);
-  frame.style.transform=`translate(${p.x}px,${p.y}px) scale(${p.s})`;
-  frame.classList.toggle('m-case',m==='case');stage.classList.toggle('m-case',m==='case');
-  if(isM())root.style.setProperty('--mbs',(innerWidth*.27/582).toFixed(4));
-  if(m==='hero')fitHero(p);
-}
-function fitHero(p){
-  if(isM())return;
-  const W=innerWidth,H=innerHeight,s=p.s;
-  const vl=Math.max(0,-p.x/s),vr=Math.min(1440,(W-p.x)/s),pad=18/s;
-  wm.style.left=(vl+.6*pad)+'px';wm.style.width=(vr-vl-1.2*pad)+'px';
-  badge.style.left=Math.min(986,vr-pad-417)+'px';
-  const vb=Math.min(810,(H-p.y)/s);badge.style.top=Math.min(-165,vb-56/s-935)+'px';
-  script.style.left=(vl+pad+70)+'px';
-}
-function units(){root.style.setProperty('--n',(isM()?innerWidth/430:Math.min(innerWidth/1440,innerHeight/900)).toFixed(4)+'px')}
-function setFade(){frame.classList.toggle('d-fade',!isM());frame.classList.toggle('m-fade',isM())}
-function layout(){units();setFade();frame.classList.remove('glide');place(mode)}
-
-/* entrance */
-function startSway(){if(RM)return;const b=els().bd;if(sway)sway.cancel();sway=b.animate([{transform:'rotate(-1.1deg)'},{transform:'rotate(1.1deg)'}],{duration:3200,iterations:Infinity,direction:'alternate',easing:'ease-in-out'})}
-function enter(){
-  if(root.dataset.in)return;root.dataset.in='1';
-  const e=els(),all=[...tags,hint,e.wm,e.sc,e.bd,mscript,mwm,mbd,wm,script,badge];
-  if(RM){document.querySelectorAll('.pre').forEach(n=>n.classList.remove('pre'));return}
-  const A=[];
-  tags.forEach((t,i)=>A.push(t.animate([{opacity:0,transform:'translateY(-40px) rotate(-4deg)'},{opacity:1,transform:'none'}],{duration:700,delay:120+i*80,easing:'cubic-bezier(.3,1.5,.5,1)',fill:'both'})));
-  A.push(e.wm.animate([{opacity:0,transform:'translateY(60px)',clipPath:'inset(100% 0 0 0)'},{opacity:1,transform:'none',clipPath:'inset(0)'}],{duration:1100,delay:260,easing:EASE,fill:'both'}));
-  A.push(e.sc.animate([{opacity:0,clipPath:'inset(0 100% 0 0)'},{opacity:1,clipPath:'inset(0)'}],{duration:900,delay:1050,easing:'cubic-bezier(.5,0,.3,1)',fill:'both'}));
-  A.push(e.bd.animate([{opacity:0,transform:'translateY(-120%) rotate(8deg)',offset:0},{opacity:1,transform:'translateY(0) rotate(-3deg)',offset:.6},{opacity:1,transform:'rotate(1.6deg)',offset:.8},{opacity:1,transform:'rotate(0)',offset:1}],{duration:1500,delay:700,easing:EASE,fill:'both'}));
-  A.push(hint.animate([{opacity:0},{opacity:.85}],{duration:600,delay:1800,easing:EASE,fill:'both'}));
-  document.querySelectorAll('.pre').forEach(n=>n.classList.remove('pre'));
-  Promise.all(A.map(a=>a.finished)).then(()=>{A.forEach(a=>a.cancel());startSway()}).catch(()=>{});
-}
-const plateReady=new Promise(r=>{if(plate.complete)r();else{plate.addEventListener('load',r);plate.addEventListener('error',r)}});
-Promise.race([Promise.all([document.fonts?document.fonts.ready:0,plateReady]),new Promise(r=>setTimeout(r,2500))]).then(()=>requestAnimationFrame(enter));
-setTimeout(enter,4000);
-
-/* hover swing on badge */
-function swing(){if(mode!=='hero'||RM||busy)return;els().bd.animate([{transform:'rotate(0)'},{transform:'rotate(-6deg)',offset:.25},{transform:'rotate(4deg)',offset:.55},{transform:'rotate(-2deg)',offset:.8},{transform:'rotate(0)'}],{duration:1400,easing:'ease-out',composite:'add'})}
-badge.querySelector('.hit').addEventListener('pointerenter',swing);
-mbd.querySelector('.hit').addEventListener('pointerenter',swing);
-
-/* transition clip: fetched as blob */
-trans.muted=true;trans.addEventListener('loadeddata',()=>{transReady=true});
-fetch(SRC.trans).then(r=>{if(!r.ok)throw 0;return r.blob()}).then(b=>{trans.src=URL.createObjectURL(b)}).catch(()=>{trans.src=SRC.trans});
-
-/* hero -> case */
-async function toCase(){
-  if(busy||mode!=='hero')return;setBusy(true);
-  const e=els();if(sway){sway.cancel();sway=null}
-  heroOutAnims=[
-    e.wm.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-40px)'}],{duration:380,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'}),
-    e.sc.animate([{opacity:1},{opacity:0}],{duration:380,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'}),
-    e.bd.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-110%) rotate(-6deg)'}],{duration:380,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'})
-  ];
-  await wait(330);
-  if(RM||!transReady){
-    place('case');plate.style.visibility='hidden';cut.style.opacity=0;
-    fx(caseplate,[{opacity:0},{opacity:1}],{duration:RM?1:500});await wait(500);arriveCase();return;
+  for(let i=0;i<pts.length;i++){
+    const a=pts[i];
+    for(let j=i+1;j<pts.length;j++){
+      const b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<125){cx.strokeStyle=hexA(a.k>.5?C1:C2,(1-d/125)*.28);cx.lineWidth=.8;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}
+    }
+    const dm=Math.hypot(a.x-mouse.x,a.y-mouse.y);
+    if(dm<190){cx.strokeStyle=hexA(C1,(1-dm/190)*.55);cx.lineWidth=1;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(mouse.x,mouse.y);cx.stroke()}
+    cx.fillStyle=hexA(a.k>.5?C1:C2,.85);cx.beginPath();cx.arc(a.x,a.y,a.r,0,6.283);cx.fill();
   }
-  trans.currentTime=0;trans.style.opacity=1;
-  await raf2();plate.style.visibility='hidden';
-  fx(cut,[{opacity:1},{opacity:0}],{duration:260,easing:'ease-out'});
-  frame.style.setProperty('--glide','1.6s');frame.classList.add('glide');place('case');
-  await new Promise(res=>{
-    let done=false;const fin=()=>{if(!done){done=true;res()}};
-    trans.addEventListener('ended',fin,{once:true});
-    const pr=trans.play();if(pr&&pr.catch)pr.catch(fin);
-    (function loop(){
-      if(done)return;
-      const d=trans.duration||5.04,p=trans.currentTime/d;
-      if(p>=.995){fin();return}
-      trans.playbackRate=Math.max(1.2,1.8+2.4*Math.sin(Math.PI*Math.min(p*1.08,1)));
-      requestAnimationFrame(loop);
-    })();
-    setTimeout(fin,4000);
-  });
-  trans.pause();
-  caseplate.getAnimations().forEach(a=>a.cancel());caseplate.style.opacity=1;trans.style.opacity=0;
-  arriveCase();
+  if(!reduce&&!document.hidden)requestAnimationFrame(frame);
 }
-function arriveCase(){
-  mode='case';idx=0;fillCase(0);document.body.classList.add('is-case');
-  fx(screen,[{opacity:1},{opacity:1}],{duration:1});
-  fx(flash,[{opacity:0},{opacity:.55},{opacity:0}],{duration:600,easing:'ease-out'});
-  vids.forEach((v,i)=>{if(i!==0)fx(v,[{opacity:0},{opacity:0}],{duration:1})});
-  fx(vids[0],[{opacity:0,transform:'scale(1.06)'},{opacity:1,transform:'scale(1)'}],{duration:700});
-  playOnly(0);caseIn(0,true);ensure(1);
-  setTimeout(()=>{setBusy(false);frame.classList.remove('glide')},RM?0:700);
-}
+readColors();size();addEventListener('resize',size);
+if(reduce){frame()}else{requestAnimationFrame(frame);document.addEventListener('visibilitychange',()=>{if(!document.hidden)requestAnimationFrame(frame)})}
 
-/* switching cases */
-async function swapTo(n){
-  if(busy)return;setBusy(true);
-  const old=V(idx);caseOut();fx(old,[{opacity:1},{opacity:0}],{duration:350,easing:'linear'});
-  await wait(380);old.pause();
-  fx(flash,[{opacity:0},{opacity:.35},{opacity:0}],{duration:420,easing:'ease-out'});
-  idx=n;fillCase(n);
-  fx(V(n),[{opacity:0,transform:'scale(1.04)'},{opacity:1,transform:'scale(1)'}],{duration:500});
-  playOnly(n);caseIn(n,false);ensure((n+1)%CASES.length);
-  await wait(520);setBusy(false);
-}
-
-/* case -> hero */
-async function toHero(){
-  if(busy||mode!=='case')return;setBusy(true);
-  caseOut();vids.forEach(v=>v.pause());fx(screen,[{opacity:1},{opacity:0}],{duration:300,easing:'linear'});
-  document.body.classList.remove('is-case');mode='hero';
-  frame.style.setProperty('--glide','.9s');frame.classList.add('glide');place('hero');
-  plate.style.visibility='';
-  fx(cut,[{opacity:0},{opacity:1}],{duration:700,delay:150});
-  const cp=fx(caseplate,[{opacity:1,filter:'blur(0px)'},{opacity:0,filter:'blur(12px)'}],{duration:800,easing:'cubic-bezier(.65,0,.35,1)'});
-  fx(plate,[{transform:'scale(1.12)',filter:'blur(8px)'},{transform:'scale(1)',filter:'blur(0px)'}],{duration:900});
-  cp.finished.then(()=>{caseplate.getAnimations().forEach(a=>a.cancel());caseplate.style.opacity=0}).catch(()=>{});
-  await wait(250);
-  const e=els();
-  const ins=[
-    e.wm.animate([{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}],{duration:700,easing:EASE,fill:'both'}),
-    e.sc.animate([{opacity:0,clipPath:'inset(0 100% 0 0)'},{opacity:1,clipPath:'inset(0)'}],{duration:700,delay:250,easing:'cubic-bezier(.5,0,.3,1)',fill:'both'}),
-    e.bd.animate([{opacity:0,transform:'translateY(-110%) rotate(6deg)',offset:0},{opacity:1,transform:'translateY(0) rotate(-2deg)',offset:.7},{opacity:1,transform:'rotate(0)',offset:1}],{duration:1100,easing:EASE,fill:'both'})
-  ];
-  heroOutAnims.forEach(a=>a.cancel());heroOutAnims=[];
-  Promise.all(ins.map(a=>a.finished)).then(()=>{ins.forEach(a=>a.cancel());if(mode==='hero')startSway()}).catch(()=>{});
-  await wait(750);
-  setBusy(false);frame.classList.remove('glide');
-}
-
-/* sheet */
-const sheet=$('#sheet');let sheetOpen=null;
-function openSheet(name){
-  if(sheetOpen===name){closeSheet();return}
-  sheetOpen=name;sheet.querySelectorAll('.in').forEach(p=>p.classList.toggle('on',p.dataset.p===name));
-  sheet.scrollTop=0;sheet.classList.add('on');document.body.classList.add('sheet-open');
-}
-function closeSheet(){sheetOpen=null;sheet.classList.remove('on');document.body.classList.remove('sheet-open')}
-$('#copyMail').addEventListener('click',async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText('bhaskardushyant40@gmail.com');b.textContent='Copied!'}catch(x){b.textContent='bhaskardushyant40@gmail.com'}setTimeout(()=>b.textContent='Copy email address',2000)});
-
-/* routing */
-const next=()=>{if(mode==='hero')toCase();else if(mode==='case')swapTo((idx+1)%CASES.length)};
-const prev=()=>{if(mode!=='case')return;if(idx===0)toHero();else swapTo(idx-1)};
-let locked=false;
-addEventListener('wheel',e=>{if(sheetOpen)return;e.preventDefault();if(busy||locked||Math.abs(e.deltaY)<18)return;locked=true;setTimeout(()=>locked=false,900);e.deltaY>0?next():prev()},{passive:false});
-let ty=0,tx=0;
-addEventListener('touchstart',e=>{const t=e.touches[0];ty=t.clientY;tx=t.clientX},{passive:true});
-addEventListener('touchmove',e=>{if(!sheetOpen)e.preventDefault()},{passive:false});
-addEventListener('touchend',e=>{if(sheetOpen)return;const t=e.changedTouches[0],dy=ty-t.clientY,dx=tx-t.clientX;
-  if(Math.abs(dy)>=40&&Math.abs(dy)>=Math.abs(dx)){dy>0?next():prev()}
-  else if(Math.abs(dx)>=40&&mode==='case'){dx>0?next():prev()}});
-addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeSheet();return}
-  if(sheetOpen)return;
-  if(['ArrowDown','PageDown',' ','Spacebar'].includes(e.key)){e.preventDefault();next()}
-  else if(e.key==='ArrowRight'){e.preventDefault();if(mode==='case')next()}
-  else if(['ArrowUp','PageUp','ArrowLeft'].includes(e.key)){e.preventDefault();prev()}
+/* ---------- cursor + magnetic + tilt ---------- */
+const cur=$('#cur'),ring=$('#ring');let rx=0,ry=0,mx=0,my=0;
+addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx}px,${my}px)`});
+addEventListener('pointerleave',()=>{mouse.x=mouse.y=-999});
+if(fine){(function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop)})()}
+document.addEventListener('pointerover',e=>{if(e.target.closest('a,button,input,.chip,.xp>button'))ring.classList.add('big')});
+document.addEventListener('pointerout',e=>{if(e.target.closest('a,button,input,.chip,.xp>button'))ring.classList.remove('big')});
+document.addEventListener('pointermove',e=>{
+  const m=e.target.closest('.mag');
+  $$('.mag').forEach(el=>{if(el!==m)el.style.transform=''});
+  if(m){const r=m.getBoundingClientRect();m.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`}
+  const c=e.target.closest('.card');
+  if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    if(c.classList.contains('tilt')&&!reduce){const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(800px) rotateY(${px*10}deg) rotateX(${-py*10}deg) translateZ(0)`}}
+  $$('.tilt').forEach(t=>{if(t!==c)t.style.transform=''});
 });
-$('#tPortfolio').addEventListener('click',()=>{closeSheet();toCase()});
-$('#tStudio').addEventListener('click',()=>{closeSheet();toHero()});
-$('#logo').addEventListener('click',()=>toHero());
-$('#tAbout').addEventListener('click',()=>openSheet('about'));
-$('#tContact').addEventListener('click',()=>openSheet('contact'));
-prevB.addEventListener('click',prev);nextB.addEventListener('click',next);
-$('#screenhit').addEventListener('click',()=>{if(mode==='case')next()});
-addEventListener('resize',layout);
+const av=$('#av');
+document.addEventListener('pointermove',e=>{if(reduce)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;av.style.transform=`rotateY(${x*18}deg) rotateX(${-y*14}deg)`});
 
-layout();
+/* ---------- reveal + counters ---------- */
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const el=en.target;el.style.transitionDelay=((+el.dataset.d||0)*90)+'ms';el.classList.add('show');io.unobserve(el);
+  $$('.count',el).forEach(count);if(el.classList.contains('count'))count(el)}}),{threshold:.12});
+function count(el){if(el.dataset.done)return;el.dataset.done=1;const to=+el.dataset.to,dec=+el.dataset.dec||0,suf=el.dataset.suf||'';const t0=performance.now(),D=1400;
+  (function s(t){const p=Math.min((t-t0)/D,1),e=1-Math.pow(1-p,4);el.textContent=(to*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(s)})(t0)}
+function arm(view){$$('.rv',view).forEach(el=>{el.classList.remove('show');el.style.transitionDelay='0ms';io.unobserve(el);io.observe(el)});$$('.count',view).forEach(c=>{delete c.dataset.done;c.textContent='0'})}
+
+/* ---------- page router with wipe transition ---------- */
+const wipe=$('#wipe'),wt=$('#wtitle');let cur_='',busy=false;
+function show(name){PAGES.forEach(p=>$('#v-'+p).classList.toggle('on',p===name));$$('.tab').forEach(t=>t.classList.toggle('on',t.dataset.go===name));cur_=name;scrollTo(0,0);arm($('#v-'+name));document.title=(name==='home'?'':NAMES[name]+' | ')+'Dushyant Bhaskar - Business Analyst'}
+function go(name,instant){
+  if(!PAGES.includes(name)||name===cur_||busy)return;
+  history.replaceState(null,'','#'+name);
+  if(instant||reduce||!cur_){show(name);return}
+  busy=true;wt.textContent=NAMES[name];wipe.className='wipe in';wt.classList.add('on');
+  setTimeout(()=>{show(name);wipe.className='wipe out';wt.classList.remove('on')},720);
+  setTimeout(()=>{wipe.className='wipe';busy=false},1300);
+}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){e.preventDefault();closePal();go(g.dataset.go)}});
+addEventListener('hashchange',()=>go(location.hash.slice(1)));
+addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openPal();return}
+  if(e.key==='Escape')closePal();
+  if(/INPUT|TEXTAREA/.test(document.activeElement.tagName)||$('#pal').classList.contains('on'))return;
+  const i=PAGES.indexOf(cur_);
+  if(e.key==='ArrowRight')go(PAGES[Math.min(i+1,PAGES.length-1)]);
+  if(e.key==='ArrowLeft')go(PAGES[Math.max(i-1,0)]);
+});
+
+/* ---------- scroll progress ---------- */
+addEventListener('scroll',()=>{const h=document.documentElement;$('#prog').style.width=(scrollY/(h.scrollHeight-innerHeight||1)*100)+'%'},{passive:true});
+
+/* ---------- typed roles + marquee ---------- */
+const roles=['Business Analyst','SQL + Python storyteller','Power BI dashboard builder','Machine learning tinkerer','NEOMA student in Reims'];
+(function type(){const el=$('#typed');let r=0,c=0,del=false;
+  if(reduce){el.textContent=roles[0];return}
+  (function tick(){const w=roles[r];c+=del?-1:1;el.textContent=w.slice(0,c);let d=del?35:70;
+    if(!del&&c===w.length){del=true;d=1500}else if(del&&c===0){del=false;r=(r+1)%roles.length;d=300}
+    setTimeout(tick,d)})()})();
+const tools=['SQL','Python','Power BI','Excel','IBM Cognos','Machine Learning','CNNs','MERN','Linux','Ansible','CCNA','JavaScript','Java'];
+$('#mq').innerHTML=[...tools,...tools].map(t=>`<span>${t}</span>`).join('');
+
+/* ---------- skills filter ---------- */
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;$$('.chip').forEach(c=>c.classList.toggle('on',c===b));
+  $$('.sk .card').forEach(c=>c.classList.toggle('dim',b.dataset.f!=='all'&&c.dataset.cat!==b.dataset.f))});
+
+/* ---------- experience accordion ---------- */
+$$('.xp>button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
+
+/* ---------- cert search ---------- */
+$('#cs').addEventListener('input',e=>{const q=e.target.value.toLowerCase();$$('#certs li').forEach(li=>li.classList.toggle('hide',!li.textContent.toLowerCase().includes(q)))});
+
+/* ---------- copy email ---------- */
+$('#copyMail').onclick=async()=>{const m='bhaskardushyant40@gmail.com';try{await navigator.clipboard.writeText(m);say('Email copied to clipboard')}catch(e){say(m)}};
+
+/* ---------- terminal ---------- */
+const tb=$('#tb');
+const out={
+ help:'Commands: whoami, skills, experience, projects, education, contact, theme, goto <page>, clear',
+ whoami:'Dushyant Bhaskar. Business Analyst and CS engineer (B.Tech, Manipal University Jaipur). Studying at NEOMA Business School, Reims. Exchange semester in Austria.',
+ skills:'SQL (MySQL), Python, Excel, Power BI, IBM Cognos, EDA, predictive modelling, CNNs, Java, C/C++, JavaScript, MERN, Linux, Bash, Ansible, CCNA',
+ experience:'Business Analyst Intern, Zillionaire Global (Feb-Jun 2026)\nSoftware Development Engineer Intern, Exaflair Technologies (Jun-Aug 2025)\nWeb Development Intern, Zillionaire Global (May-Aug 2024)',
+ projects:'1. Image Forgery Detection (95% accuracy CNN)\n2. Face Mask Detector (CNN + SSD)\n3. Business Failures Analysis (Excel, NEOMA DDDM)',
+ education:'NEOMA Business School (2026 - present)\nB.Tech CSE, Manipal University Jaipur, CGPA 8.34\nExchange, Montanuniversität Leoben, Austria',
+ contact:'Email: bhaskardushyant40@gmail.com\nLinkedIn: linkedin.com/in/dushyant-bhaskar-677a12251'
+};
+function row(html,cls){const d=document.createElement('div');d.className=cls||'o';d.innerHTML=html;tb.insertBefore(d,tl)}
+const tl=document.createElement('div');tl.className='tline';tl.innerHTML='<span>$</span><input id="ti" spellcheck="false" autocomplete="off" aria-label="Terminal input">';tb.appendChild(tl);
+const ti=$('#ti');
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+ti.addEventListener('keydown',e=>{
+  if(e.key!=='Enter')return;
+  const v=ti.value.trim();ti.value='';if(!v)return;
+  row('$ '+esc(v),'c');
+  const [c,...a]=v.toLowerCase().split(/\s+/);
+  if(c==='clear'){$$('.o,.c',tb).forEach(n=>n.remove());return}
+  if(c==='theme'){nextTheme();row('Theme changed.');}
+  else if(c==='goto'){if(PAGES.includes(a[0])){row('Going to '+a[0]+'...');setTimeout(()=>go(a[0]),500)}else row('Pages: '+PAGES.join(', '))}
+  else if(out[c])row(esc(out[c]));
+  else row('Command not found: '+esc(c)+'. Try <span class="c">help</span>.');
+  tb.scrollTop=tb.scrollHeight;
+});
+tb.addEventListener('click',()=>ti.focus());
+
+/* ---------- forecast playground ---------- */
+const fcv=$('#fc'),fx=fcv.getContext('2d');let seed=7;
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function drawFC(){
+  const b=+$('#s1').value,g=+$('#s2').value/100,sea=+$('#s3').value/100,nz=+$('#s4').value/100;
+  $('#o1').textContent=b;$('#o2').textContent=$('#s2').value+'%';$('#o3').textContent=$('#s3').value+'%';$('#o4').textContent=$('#s4').value+'%';
+  const dpr=Math.min(devicePixelRatio||1,2),w=fcv.clientWidth,h=290;fcv.width=w*dpr;fcv.height=h*dpr;fx.setTransform(dpr,0,0,dpr,0,0);fx.clearRect(0,0,w,h);
+  const r=rng(seed),hist=[],fc=[];
+  const base=t=>b*Math.pow(1+g,t)*(1+sea*Math.sin(2*Math.PI*t/12));
+  for(let t=0;t<12;t++)hist.push(base(t)*(1+(r()-.5)*2*nz));
+  for(let t=12;t<18;t++)fc.push(base(t));
+  const all=[...hist,...fc];const band=t=>base(t)*(nz*1.6+.02*(t-11));
+  const mx=Math.max(...all,...fc.map((v,i)=>v+band(12+i)))*1.08,mn=Math.min(...all,...fc.map((v,i)=>v-band(12+i)))*.9;
+  const L=40,R=w-12,T=14,B=h-28,X=t=>L+(R-L)*t/17,Y=v=>B-(B-T)*(v-mn)/(mx-mn);
+  fx.strokeStyle='rgba(255,255,255,.08)';fx.fillStyle='rgba(236,240,255,.45)';fx.font='11px JetBrains Mono, monospace';fx.lineWidth=1;
+  for(let i=0;i<=4;i++){const v=mn+(mx-mn)*i/4,y=Y(v);fx.beginPath();fx.moveTo(L,y);fx.lineTo(R,y);fx.stroke();fx.fillText(Math.round(v),4,y+4)}
+  for(let t=0;t<18;t+=3){fx.fillText((t<12?'M':'F')+(t<12?t+1:t-11),X(t)-8,h-8)}
+  // band
+  const g1=fx.createLinearGradient(0,0,w,0);g1.addColorStop(0,hexA(C1,.0));g1.addColorStop(1,hexA(C2,.28));
+  fx.fillStyle=g1;fx.beginPath();fc.forEach((v,i)=>{const x=X(12+i),y=Y(v+band(12+i));i?fx.lineTo(x,y):fx.moveTo(x,y)});
+  for(let i=fc.length-1;i>=0;i--)fx.lineTo(X(12+i),Y(fc[i]-band(12+i)));fx.closePath();fx.fill();
+  // history
+  const lg=fx.createLinearGradient(L,0,R,0);lg.addColorStop(0,C1);lg.addColorStop(1,C2);
+  fx.strokeStyle=lg;fx.lineWidth=2.5;fx.lineJoin='round';fx.beginPath();hist.forEach((v,i)=>i?fx.lineTo(X(i),Y(v)):fx.moveTo(X(i),Y(v)));fx.stroke();
+  hist.forEach((v,i)=>{fx.fillStyle=C1;fx.beginPath();fx.arc(X(i),Y(v),2.6,0,6.283);fx.fill()});
+  // forecast dashed
+  fx.setLineDash([7,6]);fx.strokeStyle=C2;fx.beginPath();fx.moveTo(X(11),Y(hist[11]));fc.forEach((v,i)=>fx.lineTo(X(12+i),Y(v)));fx.stroke();fx.setLineDash([]);
+  fx.strokeStyle='rgba(255,255,255,.25)';fx.beginPath();fx.moveTo(X(11.5),T);fx.lineTo(X(11.5),B);fx.stroke();fx.fillStyle='rgba(236,240,255,.5)';fx.fillText('forecast →',X(11.5)+6,T+10);
+  const tot=fc.reduce((a,b)=>a+b,0),prev=hist.slice(6).reduce((a,b)=>a+b,0),pk=fc.indexOf(Math.max(...fc));
+  $('#k1').textContent=Math.round(tot).toLocaleString();
+  const ch=(tot/prev-1)*100;$('#k2').textContent=(ch>=0?'+':'')+ch.toFixed(1)+'%';$('#k3').textContent='F'+(pk+1);
+}
+['s1','s2','s3','s4'].forEach(id=>$('#'+id).addEventListener('input',drawFC));
+$('#reseed').onclick=()=>{seed=Math.floor(Math.random()*9999);drawFC()};
+addEventListener('resize',()=>{if(cur_==='projects')drawFC()});
+
+/* ---------- command palette ---------- */
+const pal=$('#pal'),pin=$('#pin'),plist=$('#plist');let items=[],sel=0;
+const ACTIONS=[...PAGES.map(p=>({t:'Go to '+NAMES[p],k:'page',f:()=>go(p)})),
+  {t:'Change theme',k:'theme',f:nextTheme},
+  {t:'Copy email address',k:'copy',f:()=>$('#copyMail').click()},
+  {t:'Open LinkedIn',k:'link',f:()=>open('https://www.linkedin.com/in/dushyant-bhaskar-677a12251/','_blank','noopener')}];
+function render(){const q=pin.value.toLowerCase();items=ACTIONS.filter(a=>a.t.toLowerCase().includes(q));sel=Math.min(sel,Math.max(items.length-1,0));
+  plist.innerHTML=items.map((a,i)=>`<button class="pi${i===sel?' sel':''}" data-i="${i}">${a.t}<small>${a.k}</small></button>`).join('')||'<div class="pi">No results</div>'}
+function openPal(){pal.classList.add('on');pin.value='';sel=0;render();setTimeout(()=>pin.focus(),30)}
+function closePal(){pal.classList.remove('on');pin.blur()}
+$('#palBtn').onclick=openPal;
+pal.addEventListener('click',e=>{if(e.target===pal)closePal();const b=e.target.closest('.pi[data-i]');if(b){const a=items[+b.dataset.i];closePal();a&&a.f()}});
+pin.addEventListener('input',()=>{sel=0;render()});
+pin.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(sel+1,items.length-1);render()}
+  if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(sel-1,0);render()}
+  if(e.key==='Enter'&&items[sel]){const a=items[sel];closePal();a.f()}
+});
+
+/* ---------- start ---------- */
+const start=PAGES.includes(location.hash.slice(1))?location.hash.slice(1):'home';
+show(start);
+const ob=new MutationObserver(()=>{if(cur_==='projects')requestAnimationFrame(drawFC)});
+$$('.view').forEach(v=>ob.observe(v,{attributes:true,attributeFilter:['class']}));
+drawFC();
 })();
 </script>
 </body>
