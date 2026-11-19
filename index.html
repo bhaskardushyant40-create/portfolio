@@ -223,6 +223,9 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .top2:hover{background:var(--acc);color:#fff}
 .top2 span{display:block;transition:transform .3s var(--ease)}
 .top2:hover span{transform:translateY(-3px)}
+.eh{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:75;opacity:0;pointer-events:none;transition:opacity .25s;font-family:var(--mono);font-size:12px;background:var(--ink);color:var(--bg);padding:10px 18px 12px;overflow:hidden;white-space:nowrap}
+.eh i{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left}
+.eh.up{bottom:auto;top:84px}
 /* palette + toast */
 .pal{position:fixed;inset:0;z-index:300;background:rgba(20,20,19,.45);display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
 .pal.on{display:flex}
@@ -279,7 +282,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     </div>
   </div>
   <div class="tools0 rv"><span>Toolkit</span><div class="tk" id="tk"></div><span>3 internships · 2 ML projects · 10+ certifications</span></div>
-  <p class="hint rv">Use <kbd>←</kbd> <kbd>→</kbd> to move between pages, or <kbd>Ctrl/⌘</kbd> <kbd>K</kbd> to jump anywhere.</p>
+  <p class="hint rv">Scroll past the end of a page (or press <kbd>↓</kbd> <kbd>↑</kbd>) to move between pages, or <kbd>Ctrl/⌘</kbd> <kbd>K</kbd> to jump anywhere.</p>
 </section>
 
 <!-- ABOUT -->
@@ -304,7 +307,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <div class="thead"><span>Ask the CV</span><span>type "help"</span></div>
     <div class="tbody" id="tb"><div class="o">Welcome. Type <span class="k">help</span> to see what you can ask.</div></div>
   </div>
-  <div class="next"><button class="p" data-go="home"><small>Previous</small>← Home</button><button data-go="skills"><small>Next</small>Skills →</button></div>
+  <div class="next"><button class="p" data-go="home"><small>Previous</small>↑ Home</button><button data-go="skills"><small>Next</small>Skills ↓</button></div>
 </section>
 
 <!-- SKILLS -->
@@ -324,7 +327,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <div class="row rv" data-cat="ml"><h3><small>C</small>Machine Learning</h3><div class="tg"><span>Supervised learning</span><span>Unsupervised learning</span><span>Feature engineering</span><span>Feature selection</span><span>CNNs</span><span>Statistics</span><span>Probability</span><span>Linear algebra</span><span>Matrices</span></div></div>
     <div class="row rv" data-cat="code"><h3><small>D</small>Programming &amp; Systems</h3><div class="tg"><span>Python</span><span>Java</span><span>C/C++</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>PHP</span><span>MERN stack</span><span>OOP (Java, Python)</span><span>Linux</span><span>Bash scripting</span><span>Process control and scheduling</span><span>Threads and deadlock</span><span>Ansible</span><span>CCNA</span></div></div>
   </div>
-  <div class="next"><button class="p" data-go="about"><small>Previous</small>← About</button><button data-go="experience"><small>Next</small>Experience →</button></div>
+  <div class="next"><button class="p" data-go="about"><small>Previous</small>↑ About</button><button data-go="experience"><small>Next</small>Experience ↓</button></div>
 </section>
 
 <!-- EXPERIENCE -->
@@ -345,7 +348,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
       <div class="more"><div><ul><li>Worked on the front-end development of the official website zillionaireindia.com.</li><li>Worked on image and video classification for the Zillionaire India website.</li></ul></div></div>
     </div>
   </div>
-  <div class="next"><button class="p" data-go="skills"><small>Previous</small>← Skills</button><button data-go="projects"><small>Next</small>Projects →</button></div>
+  <div class="next"><button class="p" data-go="skills"><small>Previous</small>↑ Skills</button><button data-go="projects"><small>Next</small>Projects ↓</button></div>
 </section>
 
 <!-- PROJECTS -->
@@ -377,7 +380,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
       </div>
     </div>
   </div>
-  <div class="next"><button class="p" data-go="experience"><small>Previous</small>← Experience</button><button data-go="education"><small>Next</small>Education →</button></div>
+  <div class="next"><button class="p" data-go="experience"><small>Previous</small>↑ Experience</button><button data-go="education"><small>Next</small>Education ↓</button></div>
 </section>
 
 <!-- EDUCATION -->
@@ -404,7 +407,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <li>Ordered Data Structures, Coursera<em>Feb 2023</em></li>
     <li>C Programming and Assembly Language, NPTEL<em>Sep 2024</em></li>
   </ul>
-  <div class="next"><button class="p" data-go="projects"><small>Previous</small>← Projects</button><button data-go="contact"><small>Next</small>Contact →</button></div>
+  <div class="next"><button class="p" data-go="projects"><small>Previous</small>↑ Projects</button><button data-go="contact"><small>Next</small>Contact ↓</button></div>
 </section>
 
 <!-- CONTACT -->
@@ -417,13 +420,14 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
     <a class="lnk" href="https://www.linkedin.com/in/dushyant-bhaskar-677a12251/" target="_blank" rel="noopener">LinkedIn ↗</a>
   </div>
   <div class="ft"><span>&copy; 2026 Dushyant Bhaskar</span><span>Reims, France · Jaipur, India</span></div>
-  <div class="next"><button class="p" data-go="education"><small>Previous</small>← Education</button><button data-go="home"><small>Back to</small>Home ↑</button></div>
+  <div class="next"><button class="p" data-go="education"><small>Previous</small>↑ Education</button><button data-go="home"><small>Back to</small>Home ↑</button></div>
 </section>
 
 </main>
 
 <div class="pal" id="pal"><div class="pbox"><input id="pin" placeholder="Jump to a page, switch colour..." autocomplete="off" aria-label="Command palette"><div class="pl2" id="plist"></div></div></div>
 <button class="top2" id="toTop" aria-label="Back to top"><span>↑</span></button>
+<div class="eh" id="eh"><span></span><i></i></div>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -479,9 +483,25 @@ addEventListener('keydown',e=>{
   if(e.key==='Escape')closePal();
   if(/INPUT|TEXTAREA/.test(document.activeElement.tagName)||$('#pal').classList.contains('on'))return;
   const i=PAGES.indexOf(cur_);
-  if(e.key==='ArrowRight')go(PAGES[Math.min(i+1,PAGES.length-1)]);
-  if(e.key==='ArrowLeft')go(PAGES[Math.max(i-1,0)]);
+  const atB=scrollY+innerHeight>=document.documentElement.scrollHeight-4,atT=scrollY<=2;
+  if((e.key==='ArrowDown'||e.key==='PageDown'||e.key===' ')&&atB&&i<PAGES.length-1){e.preventDefault();go(PAGES[i+1])}
+  if((e.key==='ArrowUp'||e.key==='PageUp')&&atT&&i>0){e.preventDefault();go(PAGES[i-1])}
 });
+/* scroll past the end (or start) of a page to move to the next (or previous) one */
+let acc=0,accT;
+function edge(dy){
+  if(busy||$('#pal').classList.contains('on'))return;
+  const i=PAGES.indexOf(cur_),atB=scrollY+innerHeight>=document.documentElement.scrollHeight-4,atT=scrollY<=2;
+  clearTimeout(accT);accT=setTimeout(()=>{acc=0;setHint(0)},500);
+  if(dy>0&&atB&&i<PAGES.length-1)acc+=dy;else if(dy<0&&atT&&i>0)acc+=dy;else{acc=0;setHint(0);return}
+  setHint(Math.min(Math.abs(acc)/300,1),acc>0?'Next: '+NAMES[PAGES[i+1]]+' ↓':'Previous: '+NAMES[PAGES[i-1]]+' ↑',acc>0);
+  if(Math.abs(acc)>=300){const t=acc>0?PAGES[i+1]:PAGES[i-1];acc=0;setHint(0);go(t)}
+}
+const eh=$('#eh');
+function setHint(p,t,down){eh.style.opacity=p?1:0;eh.classList.toggle('up',down===false);if(t)eh.firstChild.textContent=t;eh.lastChild.style.transform='scaleX('+p+')'}
+addEventListener('wheel',e=>edge(e.deltaY),{passive:true});
+let ty=0;addEventListener('touchstart',e=>{ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{const d=ty-e.changedTouches[0].clientY;if(Math.abs(d)>70)edge(d>0?300:-300)},{passive:true});
 
 /* scroll progress */
 const hd=$('#hd');
